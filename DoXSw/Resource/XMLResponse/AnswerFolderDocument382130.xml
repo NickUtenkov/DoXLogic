@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<envelope>
+    <body service="Docflow.Documents.Document">
+        <getDocumentsListAcquaintance>
+            <item
+					createDate="20130206000000000"
+                documentType="Внутренние" eclass="Приказ" id="382130"
+                name="Файл и еще файл" priority="1">
+                <contact bclass="Contacts.Employee" id="10685"
+                    isMyOrganization="1" name="Болобан И.Б." position="Программист"/>
+						 <documentTasks>
+							  <item dateDeliver="20120720112124000" dateFactEnd="20111215163728000"
+									datePlanEnd="20111219163642000" eclass="30"
+									id="379010" report="123 Далее в детализации добавленной записи необходимо настроить разрезы для справочника выбора на закладке «Параметры» (поле «Наименование» не обязательно для заполнения и используется для идентификации различных выборок по справочнику в задаче)" result="0" isCanComplete="0">
+									<executor id="5131" name="Баньковская О. Н." position="Заведующий отделом в организации с ну очень длинным названием, приводить которое мы здесь не будем" bclass="Contacts.Employee" isMyOrganization="1"/>
+									<author id="5112" name="admin" position="Ведущий специалист" bclass="Contacts.Employee" isMyOrganization="1"/>
+							  </item>
+							  <item dateDeliver="20120720112224000" datePlanEnd="20111219163848000" eclass="30" id="379090" isCanComplete="0">
+									<executor id="5131" name="Баньковская О. Н." position="Заведующий отделом в организации с ну очень длинным названием, приводить которое мы здесь не будем" bclass="Contacts.Employee" isMyOrganization="1"/>
+									<author id="5112" name="admin" position="Ведущий специалист" bclass="Contacts.Employee" isMyOrganization="1"/>
+							  </item>
+							  <item dateDeliver="20120720112324000" dateFactEnd="20111215163904000"
+									datePlanEnd="20111216163848000" eclass="30"
+									id="379070" result="1" isCanComplete="0">
+									<executor id="5112" name="admin" position="Ведущий специалист" bclass="Contacts.Employee" isMyOrganization="1"/>
+									<author id="5112" name="admin" position="Ведущий специалист" bclass="Contacts.Employee" isMyOrganization="1"/>
+							  </item>
+							  <item dateDeliver="20120720112424000" datePlanEnd="20111216163848000" eclass="30" id="379060" isCanComplete="1" isSignatureNeeded="1">
+									<executor id="66318" name="Сидоренко Ф. А." position="Ведущий специалист" bclass="Contacts.Employee" isMyOrganization="1"/>
+									<author id="5112" name="admin" position="Ведущий специалист" bclass="Contacts.Employee" isMyOrganization="1"/>
+							  </item>
+						 </documentTasks>
+						 <files>
+							 <item id="9869"
+							 mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+							 name="9869.docx" size="18239" nord="8"/>
+							 <item id="9868"
+							 mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+							 name="9868.docx" size="15598" nord="7"/>
+							 <item id="9870"
+							 mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+							 name="9870.docx" size="32076" nord="4"/>
+						 </files>
+            </item>
+        </getDocumentsListAcquaintance>
+    </body>
+</envelope>

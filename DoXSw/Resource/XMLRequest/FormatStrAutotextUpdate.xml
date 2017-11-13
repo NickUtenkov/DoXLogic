@@ -1,0 +1,3 @@
+		<updateAutotext OperationUID="%@">
+			<autotext id="%d" value="%@"/>
+		</updateAutotext>

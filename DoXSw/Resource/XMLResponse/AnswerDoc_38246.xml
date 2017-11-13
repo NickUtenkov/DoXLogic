@@ -1,0 +1,300 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<envelope>
+    <body service="Docflow.Documents.Document">
+        <getDocumentsList>
+            <item controlStateCode="Control" controlDate="20111201180000000" createDate="20111222000000000"
+                docket="Далее в детализации добавленной записи необходимо настроить разрезы для справочника выбора на закладке «Параметры» (поле «Наименование» не обязательно для заполнения и используется для идентификации различных выборок по справочнику в задаче):&#xd;&#xa;Виды документов - поле множественным выбором по справочнику видов документов. Разрез определяет, для каких видов документов будет использоваться выборка справочника тематик;&#xd;&#xa;Организации – поле множественным выбором из справочника контактов. Разрез определяет, для каких сотрудников будет использоваться выборка справочника тематик.&#xd;&#xa;Далее в детализации добавленной записи необходимо настроить состав справочника выбора тематик документов с помощью формы-организатора. Для настройки необходимо в левой части «Все записи справочника» выделить требуемые значения и перенести их в правую часть «Выбранные».&#xd;&#xa;После произведенной настройки необходимо сохранить изменения."
+                documentType="Исходящие" eclass="Акт" id="38246"
+                inDate="20111222" inRegistration="22-01-01/99499/11/22/33/44/55/66/77/88/99/00/11/22/33/44/55/66/77/88/99/0123456" name="38246 Новый тестовый документ 38246" priority="1">
+                <files>
+						 <item id="9869"
+						 mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+						 name="9869.docx" size="18239" nord="8"/>
+						 <item id="9868"
+						 mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+						 name="9868.docx" size="15598" nord="7"/>
+						 <item id="9870"
+						 mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+						 name="9870.docx" size="32076" nord="4"/>
+                </files>
+					 <feedbackLinks>
+						  <item isManualEditable="1" linkTypeId="1" sourceDocumentId="3824612"/>
+						  <item isManualEditable="1" linkTypeId="3" sourceDocumentId="3779512"/>
+						  <item isManualEditable="1" linkTypeId="4" sourceDocumentId="3787012"/>
+						  <item isManualEditable="1" linkTypeId="5" sourceDocumentId="3787512"/>
+						  <item isManualEditable="1" linkTypeId="6" sourceDocumentId="3793812"/>
+					 </feedbackLinks>
+					 <forwardLinks>
+						  <item isManualEditable="1" linkTypeId="14" targetDocumentId="3795712"/>
+						  <item isManualEditable="1" linkTypeId="15" targetDocumentId="3814512"/>
+						  <item isManualEditable="1" linkTypeId="16" targetDocumentId="3825712"/>
+						  <item isManualEditable="1" linkTypeId="21" targetDocumentId="3790012"/>
+						  <item isManualEditable="1" linkTypeId="22" targetDocumentId="3810112"/>
+					 </forwardLinks>
+                <documentTasks>
+                    <item dateDeliver="20120720111224000" datePlanEnd="20111226162212000" eclass="30" id="38248" isCanComplete="1"
+								isSignatureNeeded="1">
+                        <executor id="66318" name="Сидоренко Ф. А." position="Ведущий специалист" bclass="Contacts.Employee" isMyOrganization="1"/>
+                        <author id="66318" name="Сидоренко Ф. А." position="Ведущий специалист" bclass="Contacts.Employee" isMyOrganization="1"/>
+                        <outputDocuments>
+									<!-- Using new docId
+									-->
+                            <item
+                                bclassFullName="Docflow.Documents.Document"
+                                id="3804100"
+                                name="qwerty" signatureHash="123"/>
+                            <item
+                                bclassFullName="Docflow.Documents.Document"
+                                id="379740"
+                                name="qwerty" signatureHash="123"/>
+                            <item
+                                bclassFullName="Docflow.Documents.Document"
+                                id="380410"
+                                name="qwerty" signatureHash="123"/>
+                            <item
+                                bclassFullName="Docflow.Documents.Document"
+                                id="38101"
+                                name="qwerty" signatureHash="123"/>
+                            <item
+                                bclassFullName="Docflow.Documents.Document"
+                                id="37900"
+                                name="qwerty" signatureHash="123"/>
+                        </outputDocuments>
+                        <childs>
+                            <item bclassFullName="Workflow.Works.Task"
+                                dateFactEnd="20130326100000000"
+                                description="Чильдованное поручение(согласование)" eclass="30"
+										  report="38248(1) Типа репорт который хотим чтобы он был как можно длиннее и никуда и никогда хрена куда умещался"
+                                id="3811700" isCanComplete="0"
+										  result="1"
+                                isSignatureNeeded="0"
+                                name="Поручение по документу" state="Edit">
+                                <author bclass="Contacts.Employee"
+                                    id="10685" isMyOrganization="1"
+                                    name="Болобан И.Б." position="Программист"/>
+                                <executors>
+                                    <item bclass="Contacts.Employee"
+													id="90861" isMyOrganization="1"
+													name="Уткин Н.А." position="Начальник отдела"/>
+                                    <item bclass="Contacts.Employee"
+													id="10131" isMyOrganization="1"
+													name="Костикова Е.Ю." position="Тестировщик"/>
+                                </executors>
+										 <outputFiles>
+											  <item id="9869"
+													mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+													name="9869.docx" size="18239" nord="8" signatureHash="123"/>
+										 </outputFiles>
+                            </item>
+                            <item bclassFullName="Workflow.Works.Task"
+                                dateFactEnd="20130327103000000"
+                                description="Чильдовое поручение(согласование)"
+										  report="38246(2) Типа репорт который хотим чтобы он был как можно длиннее и никуда и никогда хрена куда умещался"
+										  result="0"
+                                eclass="30" id="3811800" isCanComplete="0"
+                                isSignatureNeeded="0"
+                                name="Поручение по документу" state="SendSanction">
+                                <author bclass="Contacts.Employee"
+                                    id="10685" isMyOrganization="1"
+                                    name="Болобан И.Б." position="Программист"/>
+                                <executors>
+                                    <item bclass="Contacts.Employee"
+													id="101311" isMyOrganization="1"
+													name="Костюшко Е.Ю." position="Тестировщик"/>
+                                    <item bclass="Contacts.Employee"
+													id="101312" isMyOrganization="1"
+													name="Костяшко Т.В." position="Начальник отдела"/>
+                                </executors>
+										 <outputFiles>
+											 <item id="19820" mime="text/plain"
+											 name="19820.txt" size="4051"/>
+											 <item id="19819" mime="text/rtf"
+											 name="19819.rtf" size="16565"/>
+										 </outputFiles>
+                            </item>
+                        </childs>
+                    </item>
+                    <item dateDeliver="20120720111225000" datePlanEnd="20111226162213000" eclass="35" id="382480" isCanComplete="1" report="qwerty">
+                        <executor id="66318" name="Сидоренко Ф. А." position="Ведущий специалист" bclass="Contacts.Employee" isMyOrganization="1"/>
+                        <author id="66318" name="Сидоренко Ф. А." position="Ведущий специалист" bclass="Contacts.Employee" isMyOrganization="1"/>
+                    </item>
+							<!-- Tasks accept execution results
+							-->
+                    <item isCanReview="1" dateDeliver="20120720111225000" datePlanEnd="20111225162213000" dateFactEnd="20111225162214000" eclass="9" id="3824801" isCanComplete="0" report="qwerty1" description="Таск дескрипшн1" state="Rework">
+                        <executor id="10625" name="Салыгин М.С." position="Эксперт" bclass="Contacts.Employee" isMyOrganization="1"/>
+                        <author id="10685" name="Болобан И.Б." position="Программист" bclass="Contacts.Employee" isMyOrganization="1"/>
+								 <outputFiles>
+									  <item id="9869"
+											mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+											name="9869.docx" size="18239" nord="8" signatureHash="123"/>
+								 </outputFiles>
+                        <outputDocuments>
+									<!-- Using new docId
+									-->
+                            <item
+                                bclassFullName="Docflow.Documents.Document"
+                                id="3804100"
+                                name="qwerty" signatureHash="123"/>
+                            <item
+                                bclassFullName="Docflow.Documents.Document"
+                                id="379740"
+                                name="qwerty" signatureHash="123"/>
+                            <item
+                                bclassFullName="Docflow.Documents.Document"
+                                id="380410"
+                                name="qwerty" signatureHash="123"/>
+                            <item
+                                bclassFullName="Docflow.Documents.Document"
+                                id="38101"
+                                name="qwerty" signatureHash="123"/>
+                            <item
+                                bclassFullName="Docflow.Documents.Document"
+                                id="37900"
+                                name="qwerty" signatureHash="123"/>
+                        </outputDocuments>
+                    </item>
+                    <item isCanReview="1" dateDeliver="20120720111225000" datePlanEnd="20111226162213000" dateFactEnd="20111226162214000" eclass="9" id="3824802" isCanComplete="0" report="qwerty2" description="Таск дескрипшн2 очень длинный, такой что не уместится в одной строке. Поэтому надо предусмотреть дополнительное местечко во вьюшке." result="1" state="OnPrecise">
+                        <executor id="10625" name="Салыгин М.С." position="Эксперт" bclass="Contacts.Employee" isMyOrganization="1"/>
+                        <author id="10685" name="Болобан И.Б." position="Программист" bclass="Contacts.Employee" isMyOrganization="1"/>
+                        <outputDocuments>
+									<!-- Using new docId
+									-->
+                            <item
+                                bclassFullName="Docflow.Documents.Document"
+                                id="3804100"
+                                name="qwerty" signatureHash="123"/>
+                            <item
+                                bclassFullName="Docflow.Documents.Document"
+                                id="379740"
+                                name="qwerty" signatureHash="123"/>
+                            <item
+                                bclassFullName="Docflow.Documents.Document"
+                                id="380410"
+                                name="qwerty" signatureHash="123"/>
+                            <item
+                                bclassFullName="Docflow.Documents.Document"
+                                id="38101"
+                                name="qwerty" signatureHash="123"/>
+                            <item
+                                bclassFullName="Docflow.Documents.Document"
+                                id="37900"
+                                name="qwerty" signatureHash="123"/>
+                        </outputDocuments>
+                    </item>
+							<!-- Consolidated with childs same as above tasks accept execution results
+							-->
+                    <item dateDeliver="20120720111624000" datePlanEnd="20111229170000000" eclass="9" id="379590" isCanComplete="0">
+                        <executor id="66318" name="Сидоренко Ф. А." position="Ведущий специалист" bclass="Contacts.Employee" isMyOrganization="1"/>
+                        <author id="5112" name="admin" position="Ведущий специалист" bclass="Contacts.Employee" isMyOrganization="1"/>
+								<childs>
+								  <item isCanReview="1" dateDeliver="20120720111225000" datePlanEnd="20111225162213000" dateFactEnd="20111225162214000" eclass="9" id="3824801" isCanComplete="0" report="qwerty1" description="Таск дескрипшн1" state="Rework">
+										<executor id="10625" name="Салыгин М.С." position="Эксперт" bclass="Contacts.Employee" isMyOrganization="1"/>
+										<author id="10685" name="Болобан И.Б." position="Программист" bclass="Contacts.Employee" isMyOrganization="1"/>
+										 <outputFiles>
+											  <item id="9869"
+													mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+													name="9869.docx" size="18239" nord="8" signatureHash="123"/>
+										 </outputFiles>
+										<outputDocuments>
+											<!-- Using new docId
+											-->
+											 <item
+												  bclassFullName="Docflow.Documents.Document"
+												  id="3804100"
+												  name="qwerty" signatureHash="123"/>
+											 <item
+												  bclassFullName="Docflow.Documents.Document"
+												  id="379740"
+												  name="qwerty" signatureHash="123"/>
+											 <item
+												  bclassFullName="Docflow.Documents.Document"
+												  id="380410"
+												  name="qwerty" signatureHash="123"/>
+											 <item
+												  bclassFullName="Docflow.Documents.Document"
+												  id="38101"
+												  name="qwerty" signatureHash="123"/>
+											 <item
+												  bclassFullName="Docflow.Documents.Document"
+												  id="37900"
+												  name="qwerty" signatureHash="123"/>
+										</outputDocuments>
+								  </item>
+								  <item isCanReview="1" dateDeliver="20120720111225000" datePlanEnd="20111226162213000" dateFactEnd="20111226162214000" eclass="9" id="3824802" isCanComplete="0" report="qwerty2" description="Таск дескрипшн2 очень длинный, такой что не уместится в одной строке. Поэтому надо предусмотреть дополнительное местечко во вьюшке." result="1" state="OnPrecise">
+										<executor id="10625" name="Салыгин М.С." position="Эксперт" bclass="Contacts.Employee" isMyOrganization="1"/>
+										<author id="10685" name="Болобан И.Б." position="Программист" bclass="Contacts.Employee" isMyOrganization="1"/>
+										<outputDocuments>
+											<!-- Using new docId
+											-->
+											 <item
+												  bclassFullName="Docflow.Documents.Document"
+												  id="3804100"
+												  name="qwerty" signatureHash="123"/>
+											 <item
+												  bclassFullName="Docflow.Documents.Document"
+												  id="379740"
+												  name="qwerty" signatureHash="123"/>
+											 <item
+												  bclassFullName="Docflow.Documents.Document"
+												  id="380410"
+												  name="qwerty" signatureHash="123"/>
+											 <item
+												  bclassFullName="Docflow.Documents.Document"
+												  id="38101"
+												  name="qwerty" signatureHash="123"/>
+											 <item
+												  bclassFullName="Docflow.Documents.Document"
+												  id="37900"
+												  name="qwerty" signatureHash="123"/>
+										</outputDocuments>
+								  </item>
+								</childs>
+                    </item>
+
+                </documentTasks>
+					 <formalList>
+                    <item isCanReview="1" dateDeliver="20120720111225000" datePlanEnd="20111225162213000" dateFactEnd="20111225162214000" eclass="9" id="3824801" isCanComplete="0" report="qwerty1" description="Таск дескрипшн1" state="Rework">
+                        <executor id="10625" name="Салыгин М.С." position="Эксперт" bclass="Contacts.Employee" isMyOrganization="1"/>
+                        <author id="10685" name="Болобан И.Б." position="Программист" bclass="Contacts.Employee" isMyOrganization="1"/>
+                    </item>
+                    <item isCanReview="1" dateDeliver="20120720111225000" datePlanEnd="20111226162213000" dateFactEnd="20111226162214000" eclass="9" id="3824802" isCanComplete="0" report="qwerty2" description="Таск дескрипшн2 очень длинный, такой что не уместится в одной строке. Поэтому надо предусмотреть дополнительное местечко во вьюшке." result="1" state="OnPrecise">
+                        <executor id="10625" name="Салыгин М.С." position="Эксперт" bclass="Contacts.Employee" isMyOrganization="1"/>
+                        <author id="10685" name="Болобан И.Б." position="Программист" bclass="Contacts.Employee" isMyOrganization="1"/>
+                    </item>
+					 </formalList>
+                <addressees>
+                    <item role="Recipient">
+                        <contact bclass="Contacts.Employee" id="9382"
+                            isMyOrganization="0" name="Бекиров С." position="Заместитель Председателя"/>
+                    </item>
+                    <item role="Recipient">
+                        <contact bclass="Contacts.Employee" id="9020"
+                            isMyOrganization="1" name="Семенов А.С." position="Старший эксперт"/>
+                    </item>
+                    <item role="Recipient">
+                        <contact bclass="Contacts.Employee" id="9051"
+                            isMyOrganization="0" name="Вайнштейн В.С." position="Генеральный директор"/>
+                    </item>
+                    <item role="Recipient">
+                        <contact bclass="Contacts.Employee" id="10625"
+                            isMyOrganization="1" name="Салыгин М.С." position="Эксперт"/>
+                    </item>
+                    <item role="Recipient">
+                        <contact bclass="Contacts.LegalPerson" id="8917"
+                            isMyOrganization="0" name="Компания &quot;АПЛАНА&quot;"/>
+                    </item>
+                    <item role="Correspondent">
+                        <contact bclass="Contacts.Employee" id="9382"
+                            isMyOrganization="0" name="Бекиров С." position="Заместитель Председателя"/>
+                    </item>
+                    <item role="Addressee">
+                        <contact bclass="Contacts.Employee" id="10625"
+                            isMyOrganization="1" name="Салыгин М.С." position="Эксперт"/>
+                    </item>
+                </addressees>
+                <author id="66318" name="Сидоренко Ф. А." position="Ведущий специалист" bclass="Contacts.Employee" isMyOrganization="1"/>
+            </item>
+
+        </getDocumentsList>
+    </body>
+</envelope>

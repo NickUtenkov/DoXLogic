@@ -1,0 +1,5 @@
+		<addNewAutotext OperationUID="%@">
+			<autotext value="%@">
+				<kind code="%@" parentCode="%@"/>
+			</autotext>
+		</addNewAutotext>

@@ -1,0 +1,109 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<envelope>
+    <body service="Common.Tools.Autotext">
+        <getAutotexts>
+            <item id="123" value="Срочно в работу !">
+                <kind code="FormalTask" parentCode="task-description"/>
+            </item>
+            <item id="122" value="Внести корректировку в">
+                <kind code="FormalTask" parentCode="task-description"/>
+            </item>
+            <item id="105" value="автотекст 1">
+                <kind code="ReviewDocument" parentCode="task-report"/>
+            </item>
+            <item id="104" value="автотекст 2_рассмотрено">
+                <kind code="ReviewDocument" parentCode="task-report"/>
+            </item>
+            <item id="103" value="Прошу подготовить распоряжение.">
+                <kind code="FormalTask" parentCode="task-description"/>
+            </item>
+            <item id="106" value="Рассмотрено. В поле «Файлы» к документам и задачам системы можно прикрепить файлы различных типов. К документу можно приложить файлы, созданные во встроенном текстовом редакторе системы, файлы, созданные на основе шаблонов и отчетов, различные файлы из файловой системы, изображения, созданные с помощью сканера и файлы, прикрепленные к письмам электронной почты пользователя.&#xd;&#xa;Для присоединения файла следует нажать кнопку « » и в выпадающем меню выбрать нужный источник файла.&#xd;&#xa;Выбранные файлы можно отредактировать, открыв их в ассоциированном редакторе с помощью кнопки « ».&#xd;&#xa;Текущее состояние любого из прикрепленных файлов можно сохранить как версию файла. Инструкции по сохранению версий находятся в разделе «Управление версиями прикрепленных файлов».">
+                <kind code="ReviewDocument" parentCode="task-report"/>
+            </item>
+            <item id="102" value="Прошу обеспечить выполнение к указанному сроку.">
+                <kind code="FormalTask" parentCode="task-description"/>
+            </item>
+            <item id="82" value="автотекст 1">
+                <kind code="AgreeDocument" parentCode="task-description"/>
+            </item>
+            <item id="89" value="автотекст 10">
+                <kind code="AgreeDocument" parentCode="task-description"/>
+            </item>
+            <item id="90" value="автотекст 15">
+                <kind code="AgreeDocument" parentCode="task-description"/>
+            </item>
+            <item id="94" value="автотекст 16">
+                <kind code="AgreeDocument" parentCode="task-description"/>
+            </item>
+            <item id="87" value="автотекст 17">
+                <kind code="AgreeDocument" parentCode="task-description"/>
+            </item>
+            <item id="97" value="автотекст 18">
+                <kind code="AgreeDocument" parentCode="task-description"/>
+            </item>
+            <item id="84" value="автотекст 2">
+                <kind code="AgreeDocument" parentCode="task-description"/>
+            </item>
+            <item id="85" value="автотекст 3">
+                <kind code="AgreeDocument" parentCode="task-description"/>
+            </item>
+            <item id="93" value="автотекст 4">
+                <kind code="AgreeDocument" parentCode="task-description"/>
+            </item>
+            <item id="99" value="автотекст 5">
+                <kind code="AgreeDocument" parentCode="task-description"/>
+            </item>
+            <item id="88" value="автотекст 6">
+                <kind code="AgreeDocument" parentCode="task-description"/>
+            </item>
+            <item id="92" value="автотекст 8">
+                <kind code="AgreeDocument" parentCode="task-description"/>
+            </item>
+            <item id="98" value="автотекст 9">
+                <kind code="AgreeDocument" parentCode="task-description"/>
+            </item>
+            <item id="96" value="автотектс 12">
+                <kind code="AgreeDocument" parentCode="task-description"/>
+            </item>
+            <item id="95" value="автотеткст 11">
+                <kind code="AgreeDocument" parentCode="task-description"/>
+            </item>
+            <item id="91" value="автотеткст 13">
+                <kind code="AgreeDocument" parentCode="task-description"/>
+            </item>
+            <item id="100" value="автотеткст 7">
+                <kind code="AgreeDocument" parentCode="task-description"/>
+            </item>
+            <item id="101" value="автоткст 14">
+                <kind code="AgreeDocument" parentCode="task-description"/>
+            </item>
+            <item id="63" value="Согласован">
+                <kind code="AgreeDocument" parentCode="task-report"/>
+            </item>
+            <item id="632" value="Согласован 2">
+                <kind code="AgreeDocument" parentCode="task-report"/>
+            </item>
+            <item id="633" value="Согласован 3">
+                <kind code="AgreeDocument" parentCode="task-report"/>
+            </item>
+            <item id="634" value="Согласован 4">
+                <kind code="AgreeDocument" parentCode="task-report"/>
+            </item>
+            <item id="86" value="Согласование документа">
+                <kind code="AgreeDocument" parentCode="task-description"/>
+            </item>
+            <item id="62" value="Согласовать документ и выдать поручение">
+                <kind code="AgreeDocument" parentCode="task-description"/>
+            </item>
+            <item id="83" value="Для добавления подзадачи необходимо нажать кнопку «Новая задача» ( ). В некоторых случаях на экран будет выведен селектор для выбора вида создаваемой задачи.  При создании нескольких задач, возможно, потребуется связать их в некоторую последовательность. Для этого в списке задач маршрута необходимо выделить в задачи в той последовательности, в которой они должны выполняться, и нажать кнопку «Связать» ( ). При таком способе связывания предшествующей задачей будет та, которая была выбрана раньше.&#xd;&#xa;Для перемещения задач вверх и вниз по списку предназначены кнопки «Вверх» ( ) и «Вниз» ( ).&#xd;&#xa;Связывать задачи можно также и с помощью «мыши». Для этого необходимо навести курсор на «предшествующую» задачу на графике в правой части окна, нажать и удерживать левую кнопку «мыши», затем перевести курсор на «последующую» задачу и отпустить левую кнопку «мыши».&#xd;&#xa;Для удаления связи между задачами следует поставить «галочки» напротив связанных задач и нажать кнопку «Развязать»  на панели инструментов.&#xd;&#xa;">
+                <kind code="WFA.ReviewTaskCard" parentCode="TaskAutotext"/>
+            </item>
+            <item id="1634" value="Исполнение принимаю">
+                <kind code="WFA.ReviewTaskCard" parentCode="TaskAutotext"/>
+            </item>
+            <item id="1635" value="Исполнение НЕ принимаю">
+                <kind code="WFA.ReviewTaskCard" parentCode="TaskAutotext"/>
+            </item>
+        </getAutotexts>
+    </body>
+</envelope>

@@ -1,0 +1,3 @@
+				<editTask>
+					<task id="%d" datePlanEnd="%@" report="%@" description="%@" executor="%d" %@/>
+				</editTask>

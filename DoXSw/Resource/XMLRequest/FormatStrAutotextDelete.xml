@@ -1,0 +1,3 @@
+		<deleteAutotext OperationUID="%@">
+			<autotext id="%d"/>
+		</deleteAutotext>

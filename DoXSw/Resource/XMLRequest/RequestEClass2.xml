@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<envelope>
+	<body service="EClasses.EClass">
+		<getEClasses rootEClass="Docflow.References.DocumentHandling"/>
+		<getEClasses rootEClass="Workflow.References.FormalTask"/>
+	</body>
+</envelope>

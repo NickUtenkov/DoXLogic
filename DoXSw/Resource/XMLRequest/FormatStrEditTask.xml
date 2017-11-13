@@ -1,0 +1,6 @@
+		<editTask OperationUID="%@">
+			<task id="%d" isAutoExecutionCC="%d" %@>
+				%@
+			</task>
+		</editTask>
+		

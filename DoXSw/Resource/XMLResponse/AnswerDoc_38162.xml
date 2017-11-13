@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<envelope>
+    <body service="Docflow.Documents.Document">
+        <getDocumentsList>
+            <item controlStateCode="Control" controlDate="20111217180000000" createDate="20111221000000000"
+                documentType="Исходящие" eclass="Договор" id="38162" name="38162 345678">
+                <documentTasks>
+                    <item dateDeliver="20120720113924000" datePlanEnd="20111223170000000" eclass="29" id="38171" isCanComplete="1">
+                        <executor id="66318" name="Сидоренко Ф. А." position="Ведущий специалист" bclass="Contacts.Employee" isMyOrganization="1"/>
+                        <author id="66318" name="Сидоренко Ф. А." position="Ведущий специалист" bclass="Contacts.Employee" isMyOrganization="1"/>
+                    </item>
+                </documentTasks>
+                <agreeHistoryList>
+                    <item dateDeliver="20120720114024000" dateFactEnd="20111221184041000"
+                        datePlanEnd="20111223170000000" eclass="30"
+                        id="38164" result="1" isCanComplete="0">
+                        <executor id="66318" name="Сидоренко Ф. А." position="Ведущий специалист" bclass="Contacts.Employee" isMyOrganization="1"/>
+                        <author id="66318" name="Сидоренко Ф. А." position="Ведущий специалист" bclass="Contacts.Employee" isMyOrganization="1"/>
+                    </item>
+                    <item dateDeliver="20120720114124000" dateFactEnd="20111221190150000"
+                        datePlanEnd="20111223170000000" eclass="30"
+                        id="38170" isCanComplete="0"
+                        report="Документ был рассмотрен раннее. Резолюция установлена автоматически на основании ранее указанной резолюции" result="1">
+                        <executor id="66318" name="Сидоренко Ф. А." position="Ведущий специалист" bclass="Contacts.Employee" isMyOrganization="1"/>
+                        <author id="66318" name="Сидоренко Ф. А." position="Ведущий специалист" bclass="Contacts.Employee" isMyOrganization="1"/>
+                    </item>
+                </agreeHistoryList>
+                <author id="66318" name="Сидоренко Ф. А." position="Ведущий специалист" bclass="Contacts.Employee" isMyOrganization="1"/>
+                <contact bclass="Contacts.Employee" id="5131"
+                    isMyOrganization="1" name="Баньковская О. Н." position="Заведующий отделом в организации с ну очень длинным названием, приводить которое мы здесь не будем"/>
+            </item>
+
+        </getDocumentsList>
+    </body>
+</envelope>

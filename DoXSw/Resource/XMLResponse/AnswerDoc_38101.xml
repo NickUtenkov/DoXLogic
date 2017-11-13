@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<envelope>
+    <body service="Docflow.Documents.Document">
+        <getDocumentsList>
+            <item controlStateCode="Special" controlDate="20111210180000000" createDate="20111215000000000"
+                docket="Распоряжение Главы АВО" documentType="Исходящие"
+                eclass="Распоряжение Главы АВО" id="38101" name="38101 Распоряжение Главы АВО">
+                <documentTasks>
+                    <item dateDeliver="20120720112724000" datePlanEnd="20111219170000000" eclass="29" id="38109" isCanComplete="1">
+                        <executor id="66318" name="Сидоренко Ф. А." position="Ведущий специалист" bclass="Contacts.Employee" isMyOrganization="1"/>
+                        <author id="5112" name="admin" position="Ведущий специалист" bclass="Contacts.Employee" isMyOrganization="1"/>
+                    </item>
+                </documentTasks>
+                <agreeHistoryList>
+                    <item dateDeliver="20120720112524000" dateFactEnd="20111215191121000"
+                        datePlanEnd="20111219170000000" eclass="30"
+                        id="38103" report="не согласен Далее в детализации добавленной записи необходимо настроить разрезы для справочника выбора на закладке «Параметры» (поле «Наименование» не обязательно для заполнения и используется для идентификации различных выборок по справочнику в задаче)" result="0" isCanComplete="0">
+                        <executor id="5131" name="Баньковская О. Н." position="Заведующий отделом в организации с ну очень длинным названием, приводить которое мы здесь не будем" bclass="Contacts.Employee" isMyOrganization="1"/>
+                        <author id="5112" name="admin" position="Ведущий специалист" bclass="Contacts.Employee" isMyOrganization="1"/>
+                    </item>
+                    <item dateDeliver="20120720112624000" dateFactEnd="20111215191212000"
+                        datePlanEnd="20111219170000000" eclass="30"
+                        id="38106" report="приложен файл Далее в детализации добавленной записи необходимо настроить разрезы для справочника выбора на закладке «Параметры» (поле «Наименование» не обязательно для заполнения и используется для идентификации различных выборок по справочнику в задаче)" result="1" isCanComplete="0">
+                        <executor id="5131" name="Баньковская О. Н." position="Заведующий отделом в организации с ну очень длинным названием, приводить которое мы здесь не будем" bclass="Contacts.Employee" isMyOrganization="1"/>
+                        <author id="5112" name="admin" position="Ведущий специалист" bclass="Contacts.Employee" isMyOrganization="1"/>
+                    </item>
+                </agreeHistoryList>
+                <author id="5112" name="admin" position="Ведущий специалист" bclass="Contacts.Employee" isMyOrganization="1"/>
+            </item>
+
+        </getDocumentsList>
+    </body>
+</envelope>

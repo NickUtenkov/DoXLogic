@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<envelope>
+    <body service="Docflow.Documents.Document">
+        <getDocumentsListAcquaintance>
+            <item
+					createDate="20130207000000000"
+						 documentType="Внутренние" eclass="Прочий документ"
+						 id="38332" inDate="20130207" inRegistration="/13/27" name="Документ из папки Доклады к совещанию 01.03.2013">
+						 <contact bclass="Contacts.Employee" id="10685"
+							  isMyOrganization="1" name="Болобан И.Б." position="Программист"/>
+            </item>
+        </getDocumentsListAcquaintance>
+    </body>
+</envelope>

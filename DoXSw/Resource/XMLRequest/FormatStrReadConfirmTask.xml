@@ -1,0 +1,3 @@
+		<executeTask OperationUID="%@">
+			<task id="%d" result="1" report="%@"/>
+		</executeTask>

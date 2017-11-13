@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<envelope>
+    <body service="Docflow.Documents.Document">
+        <getDocumentsList>
+            <item controlStateCode="Special" controlDate="20111218180000000" createDate="20111215000000000"
+                docket="Внести в Правила подтверждения полномочий плательщиков страховых взносов в государственные внебюджетные фонды&#xd;&#xa;по производству, выпуску в свет (в эфир) и (или) изданию средств массовой информации, а также ведения реестра указанных плательщиков страховых взносов и передачи его в органы контроля за уплатой страховых взносов, утвержденные постановлением Правительства Российской Федерации от 5 марта 2011 г. № 150 (Собрание законодательства Российской Федерации, 2011, № 11, ст. 1529), следующие изменения:"
+                documentType="Внутренние" eclass="Приказ" id="38032" name="38032 Приказ 1">
+                <documentTasks>
+                    <item dateDeliver="20120720114524000" datePlanEnd="20111216170000000" eclass="30" id="38038" isCanComplete="1"
+						  reworkReason="Причина доработки" reworkDescription="Описание доработовки Внести в Правила подтверждения полномочий плательщиков страховых взносов в государственные внебюджетные фонды">
+                        <executor id="66318" name="Сидоренко Ф. А." position="Ведущий специалист" bclass="Contacts.Employee" isMyOrganization="1"/>
+                        <author id="5131" name="Баньковская О. Н." position="Заведующий отделом в организации с ну очень длинным названием, приводить которое мы здесь не будем" bclass="Contacts.Employee" isMyOrganization="1"/>
+                    </item>
+                </documentTasks>
+                <agreeHistoryList>
+                    <item dateDeliver="20120720114224000" datePlanEnd="20111216170000000" eclass="30"
+                        id="38037" report="с внесенной резолюцие/не исполнено" isCanComplete="0">
+                        <executor id="5131" name="Баньковская О. Н." position="Заведующий отделом в организации с ну очень длинным названием, приводить которое мы здесь не будем" bclass="Contacts.Employee" isMyOrganization="1"/>
+                        <author id="5131" name="Баньковская О. Н." position="Заведующий отделом в организации с ну очень длинным названием, приводить которое мы здесь не будем" bclass="Contacts.Employee" isMyOrganization="1"/>
+                    </item>
+                    <item dateDeliver="20120720114324000" datePlanEnd="20111216170000000" eclass="30" id="38036" isCanComplete="0">
+                        <executor id="5172" name="Юзяк А. В." position="Консультант" bclass="Contacts.Employee" isMyOrganization="1"/>
+                        <author id="5131" name="Баньковская О. Н." position="Заведующий отделом в организации с ну очень длинным названием, приводить которое мы здесь не будем" bclass="Contacts.Employee" isMyOrganization="1"/>
+                    </item>
+                    <item dateDeliver="20120720114424000" datePlanEnd="20111216170000000" eclass="30" id="38034" isCanComplete="0">
+                        <executor id="5112" name="admin" position="Ведущий специалист" bclass="Contacts.Employee" isMyOrganization="1"/>
+                        <author id="5131" name="Баньковская О. Н." position="Заведующий отделом в организации с ну очень длинным названием, приводить которое мы здесь не будем" bclass="Contacts.Employee" isMyOrganization="1"/>
+                    </item>
+                </agreeHistoryList>
+                <author id="5131" name="Баньковская О. Н." position="Заведующий отделом в организации с ну очень длинным названием, приводить которое мы здесь не будем" bclass="Contacts.Employee" isMyOrganization="1"/>
+                <contact bclass="Contacts.Employee" id="5131"
+                    isMyOrganization="1" name="Баньковская О. Н." position="Заведующий отделом в организации с ну очень длинным названием, приводить которое мы здесь не будем"/>
+            </item>
+
+        </getDocumentsList>
+    </body>
+</envelope>

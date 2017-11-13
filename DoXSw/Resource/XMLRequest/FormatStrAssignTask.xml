@@ -1,0 +1,5 @@
+		<assignTaskExecutor OperationUID="%@">
+			<task id="%d" executor="%d" report="%@" isDeleteForwards="%s" %@>
+			%@
+			</task>
+		</assignTaskExecutor>

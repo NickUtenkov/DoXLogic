@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<envelope>
+    <body service="Docflow.Documents.Document">
+        <getDocumentsList>
+            <item controlStateCode="Special" controlDate="20111216180000000" createDate="20111221000000000"
+                documentType="Исходящие" eclass="Договор" id="38140" name="38140 тест - согласование на соисполнение">
+                <documentTasks>
+                    <item dateDeliver="20120720113824000" datePlanEnd="20111223170000000" eclass="30" id="38141" isCanComplete="1">
+                        <coexecutor id="66318" name="Сидоренко Ф. А." position="Ведущий специалист" bclass="Contacts.Employee" isMyOrganization="1"/>
+                        <executor id="5112" name="admin" position="Ведущий специалист" bclass="Contacts.Employee" isMyOrganization="1"/>
+                        <author id="66318" name="Сидоренко Ф. А." position="Ведущий специалист" bclass="Contacts.Employee" isMyOrganization="1"/>
+                        <childs>
+                            <item bclassFullName="Workflow.Works.Task"
+                                dateFactEnd="20130326100000000"
+                                description="Чильдованное поручение 681170" eclass="9"
+										  report="37634(1) Типа репорт который хотим чтобы он был как можно длиннее и никуда и никогда хрена куда умещался"
+                                id="681170" isCanComplete="0"
+                                isSignatureNeeded="0"
+                                name="Поручение по документу" state="Close">
+                                <author bclass="Contacts.Employee"
+                                    id="10685" isMyOrganization="1"
+                                    name="Болобан И.Б." position="Программист"/>
+                                <executors>
+                                    <item bclass="Contacts.Employee"
+													id="90861" isMyOrganization="1"
+													name="Уткин Н.А." position="Начальник отдела"/>
+                                    <item bclass="Contacts.Employee"
+													id="10131" isMyOrganization="1"
+													name="Костикова Е.Ю." position="Тестировщик"/>
+                                </executors>
+                            </item>
+                            <item bclassFullName="Workflow.Works.Task"
+                                dateFactEnd="20130327103000000"
+                                description="Чильдовое поручение 681180"
+										  report="37634(2) Типа репорт который хотим чтобы он был как можно длиннее и никуда и никогда хрена куда умещался"
+                                eclass="9" id="681180" isCanComplete="0"
+                                isSignatureNeeded="0"
+                                name="Поручение по документу" state="Close">
+                                <author bclass="Contacts.Employee"
+                                    id="10685" isMyOrganization="1"
+                                    name="Болобан И.Б." position="Программист"/>
+                                <executors>
+                                    <item bclass="Contacts.Employee"
+													id="101311" isMyOrganization="1"
+													name="Костюшко Е.Ю." position="Тестировщик"/>
+                                    <item bclass="Contacts.Employee"
+													id="101312" isMyOrganization="1"
+													name="Костяшко Т.В." position="Начальник отдела"/>
+                                </executors>
+                            </item>
+                        </childs>
+                    </item>
+                </documentTasks>
+                <author id="66318" name="Сидоренко Ф. А." position="Ведущий специалист" bclass="Contacts.Employee" isMyOrganization="1"/>
+                <contact bclass="Contacts.Employee" id="5131"
+                    isMyOrganization="1" name="Баньковская О. Н." position="Заведующий отделом в организации с ну очень длинным названием, приводить которое мы здесь не будем"/>
+            </item>
+
+        </getDocumentsList>
+    </body>
+</envelope>

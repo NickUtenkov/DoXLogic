@@ -1,0 +1,6 @@
+
+					<item id="%d" datePlanEnd="%@" report="%@" description="%@" %@ %@>
+						<executors>
+						%@
+						</executors>
+					</item>

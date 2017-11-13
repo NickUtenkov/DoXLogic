@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<envelope>
+    <body service="Docflow.Documents.Document">
+        <getDocumentsList>
+            <item controlStateCode="Control" controlDate="20111203180000000" createDate="20111215000000000"
+                docket="Распоряжение от 8 декабря 2011 г. №2223-р&#xd;&#xa;1. Утвердить прилагаемый состав подкомиссии по использованию информационных технологий при предоставлении государственных и муниципальных услуг Правительственной комиссии по внедрению информационных технологий в деятельность государственных органов и органов местного самоуправления.&#xd;&#xa;2. Признать утратившим силу распоряжение Правительства Российской Федерации от 5 апреля 2011 г. № 569-р (Собрание законодательства Российской Федерации, 2011, № 15, ст. 2164).&#xd;&#xa;Председатель Правительства"
+                documentType="Входящие" eclass="Постановление"
+                id="37870" inDate="20111215" inRegistration="22/2321" name="37870 Об утверждении состава подкомиссии по использованию информационных технологий при предоставлении государственных и муниципальных услуг Правительственной комиссии по внедрению информационных технологий в деятельность государственных органов и органов местного самоуправления">
+                <files>
+						 <item id="9845" mime="application/msword"
+						 name="9845.doc" size="33280" nord="8"/>
+						 <item id="9847" mime="application/msword"
+						 name="9847.doc" size="172544" nord="6"/>
+						 <item id="9844" mime="application/msword"
+						 name="9844.doc" size="78336" nord="4"/>
+						 <item id="9846" mime="application/msword"
+						 name="9846.doc" size="31744" nord="2"/>
+                </files>
+                <documentTasks>
+                    <item dateDeliver="20120720111424000" datePlanEnd="20111229134106000" eclass="35" id="37872" isCanComplete="1">
+                        <executor id="66318" name="Сидоренко Ф. А." position="Ведущий специалист" bclass="Contacts.Employee" isMyOrganization="1"/>
+                        <author id="5131" name="Баньковская О. Н." position="Заведующий отделом в организации с ну очень длинным названием, приводить которое мы здесь не будем" bclass="Contacts.Employee" isMyOrganization="1"/>
+                    </item>
+                </documentTasks>
+                <addressees>
+                    <item role="Correspondent">
+                        <contact bclass="Contacts.Employee" id="9020"
+                            isMyOrganization="1" name="Семенов А.С." position="Старший эксперт"/>
+                    </item>
+                    <item role="Correspondent">
+                        <contact bclass="Contacts.Employee" id="9051"
+                            isMyOrganization="0" name="Вайнштейн В.С." position="Генеральный директор"/>
+                    </item>
+                    <item role="Correspondent">
+                        <contact bclass="Contacts.Employee" id="10625"
+                            isMyOrganization="1" name="Салыгин М.С." position="Эксперт"/>
+                    </item>
+                    <item role="Correspondent">
+                        <contact bclass="Contacts.LegalPerson" id="8917"
+                            isMyOrganization="0" name="Компания &quot;АПЛАНА&quot;"/>
+                    </item>
+                    <item role="Correspondent">
+                        <contact bclass="Contacts.Employee" id="9382"
+                            isMyOrganization="0" name="Бекиров С." position="Заместитель Председателя"/>
+                    </item>
+                    <item role="Addressee">
+                        <contact bclass="Contacts.Employee" id="10625"
+                            isMyOrganization="1" name="Салыгин М.С." position="Эксперт"/>
+                    </item>
+                </addressees>
+                <author id="6939" name="Административная комиссия при администрации  г. Михайловка Волгоградской области" bclass="Contacts.Employee" isMyOrganization="1"/>
+            </item>
+
+        </getDocumentsList>
+    </body>
+</envelope>

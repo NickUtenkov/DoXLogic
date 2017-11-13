@@ -1,0 +1,3 @@
+		<acceptTask OperationUID="%@">
+			<task id="%d" acceptTaskDescription="%@" acceptTask="%d"/>
+		</acceptTask>

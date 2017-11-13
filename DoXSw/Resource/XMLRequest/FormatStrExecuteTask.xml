@@ -1,0 +1,5 @@
+		<executeTask OperationUID="%@">
+			<task id="%d" result="%d" report="%@" isDeleteForwards="%s" %@ %@ %@>
+			%@
+			</task>
+		</executeTask>

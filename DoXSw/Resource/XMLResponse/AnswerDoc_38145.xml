@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<envelope>
+    <body service="Docflow.Documents.Document">
+        <getDocumentsList>
+            <item controlStateCode="Control" controlDate="20111207180000000" createDate="20111221000000000" documentType="Исходящие"
+                eclass="Инструкция" id="38145" inDate="20111221"
+                inRegistration="22/2333" name="38145 тест рассмотрения на соисполнении">
+                <documentTasks>
+                    <item dateDeliver="20120720111724000" datePlanEnd="20120104170000000" eclass="35" id="38146" isCanComplete="1">
+                        <coexecutor id="66318" name="Сидоренко Ф. А." position="Ведущий специалист" bclass="Contacts.Employee" isMyOrganization="1"/>
+                        <executor id="5112" name="admin" position="Ведущий специалист" bclass="Contacts.Employee" isMyOrganization="1"/>
+                        <author id="66318" name="Сидоренко Ф. А." position="Ведущий специалист" bclass="Contacts.Employee" isMyOrganization="1"/>
+                        <childs>
+                            <item bclassFullName="Workflow.Works.Task"
+                                dateFactEnd="20130326100000000"
+                                description="Чильдованное поручение 581170" eclass="9"
+										  report="37634(1) Типа репорт который хотим чтобы он был как можно длиннее и никуда и никогда хрена куда умещался"
+                                id="581170" isCanComplete="0"
+                                isSignatureNeeded="0"
+                                name="Поручение по документу" state="Create">
+                                <author bclass="Contacts.Employee"
+                                    id="10685" isMyOrganization="1"
+                                    name="Болобан И.Б." position="Программист"/>
+                                <executors>
+                                    <item bclass="Contacts.Employee"
+													id="90861" isMyOrganization="1"
+													name="Уткин Н.А." position="Начальник отдела"/>
+                                    <item bclass="Contacts.Employee"
+													id="10131" isMyOrganization="1"
+													name="Костикова Е.Ю." position="Тестировщик"/>
+                                </executors>
+                            </item>
+                            <item bclassFullName="Workflow.Works.Task"
+                                dateFactEnd="20130327103000000"
+                                description="Чильдовое поручение 581180"
+										  report=""
+                                eclass="9" id="581180" isCanComplete="0"
+                                isSignatureNeeded="0"
+                                name="Поручение по документу" state="Create">
+                                <author bclass="Contacts.Employee"
+                                    id="10685" isMyOrganization="1"
+                                    name="Болобан И.Б." position="Программист"/>
+                                <executors>
+                                    <item bclass="Contacts.Employee"
+													id="101311" isMyOrganization="1"
+													name="Костюшко Е.Ю." position="Тестировщик"/>
+                                    <item bclass="Contacts.Employee"
+													id="101312" isMyOrganization="1"
+													name="Костяшко Т.В." position="Начальник отдела"/>
+                                </executors>
+                            </item>
+                        </childs>
+                    </item>
+                </documentTasks>
+                <addressees>
+                    <item role="Recipient">
+                        <contact bclass="Contacts.Employee" id="9382"
+                            isMyOrganization="0" name="Бекиров С." position="Заместитель Председателя"/>
+                    </item>
+                    <item role="Recipient">
+                        <contact bclass="Contacts.Employee" id="9020"
+                            isMyOrganization="1" name="Семенов А.С." position="Старший эксперт"/>
+                    </item>
+                    <item role="Recipient">
+                        <contact bclass="Contacts.Employee" id="9051"
+                            isMyOrganization="0" name="Вайнштейн В.С." position="Генеральный директор"/>
+                    </item>
+                    <item role="Recipient">
+                        <contact bclass="Contacts.Employee" id="10625"
+                            isMyOrganization="1" name="Салыгин М.С." position="Эксперт"/>
+                    </item>
+                    <item role="Recipient">
+                        <contact bclass="Contacts.LegalPerson" id="8917"
+                            isMyOrganization="0" name="Компания &quot;АПЛАНА&quot;"/>
+                    </item>
+                    <item role="Correspondent">
+                        <contact bclass="Contacts.Employee" id="9382"
+                            isMyOrganization="0" name="Бекиров С." position="Заместитель Председателя"/>
+                    </item>
+                    <item role="Addressee">
+                        <contact bclass="Contacts.Employee" id="10625"
+                            isMyOrganization="1" name="Салыгин М.С." position="Эксперт"/>
+                    </item>
+                </addressees>
+                <author id="6319" name=" &quot;Кленовый коммунальщик&quot;" bclass="Contacts.Employee" isMyOrganization="1"/>
+            </item>
+
+        </getDocumentsList>
+    </body>
+</envelope>

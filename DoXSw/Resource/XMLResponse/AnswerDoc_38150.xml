@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<envelope>
+    <body service="Docflow.Documents.Document">
+        <getDocumentsList>
+            <item controlStateCode="Control" controlDate="20111213180000000" createDate="20111221000000000"
+                documentType="Исходящие" eclass="Распоряжение Главы АВО"
+                id="38150" name="38150 тест утверждения на соисполнении">
+                <documentTasks>
+                    <item dateDeliver="20120720113224000" datePlanEnd="20111223170000000" eclass="29" id="38153" isCanComplete="1">
+                        <coexecutor id="66318" name="Сидоренко Ф. А." position="Ведущий специалист" bclass="Contacts.Employee" isMyOrganization="1"/>
+                        <executor id="5112" name="admin" position="Ведущий специалист" bclass="Contacts.Employee" isMyOrganization="1"/>
+                        <author id="66318" name="Сидоренко Ф. А." position="Ведущий специалист" bclass="Contacts.Employee" isMyOrganization="1"/>
+                    </item>
+                </documentTasks>
+                <contact bclass="Contacts.Employee" id="5131"
+                    isMyOrganization="1" name="Баньковская О. Н." position="Заведующий отделом в организации с ну очень длинным названием, приводить которое мы здесь не будем"/>
+                <author id="66318" name="Сидоренко Ф. А." position="Ведущий специалист" bclass="Contacts.Employee" isMyOrganization="1"/>
+            </item>
+
+        </getDocumentsList>
+    </body>
+</envelope>

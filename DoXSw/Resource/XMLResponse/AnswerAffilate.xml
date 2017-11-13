@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<envelope>
+    <body service="Contacts.Contact">
+	<getAffilates>
+		<item linkTypeCode="OfficeOfBoss" linkTypeName="Канцелярия руководителя">
+			<contactTo bclass="Contacts.Department" id="255" isMyOrganization="1" name="Отдел автоматизации"/>
+		</item>
+		<item linkTypeCode="Assistant" linkTypeName="Помощник руководителя">
+			<contactTo bclass="Contacts.Employee" id="2726" isMyOrganization="1" name="Грошев Александр*" position="Заместитель Директора"/>
+		</item>
+		<item linkTypeCode="OfficeOfBoss" linkTypeName="Канцелярия руководителя">
+			<contactTo bclass="Contacts.Employee" id="2726" isMyOrganization="1" name="Грошев Александр*" position="Заместитель Директора"/>
+		</item>
+		<item linkTypeCode="OfficeOfBoss" linkTypeName="Канцелярия руководителя">
+			<contactTo bclass="Contacts.Employee" id="24034" isMyOrganization="1" name="Аффилянтыч И.Б." position="Губернатор"/>
+		</item>
+	</getAffilates>
+    </body>
+</envelope>

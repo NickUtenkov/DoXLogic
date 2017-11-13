@@ -1,0 +1,6 @@
+		<updateTaskFiles>
+			<task id="%d">
+			%@
+			</task>
+		</updateTaskFiles>
+		

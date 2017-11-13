@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<envelope>
+	<body service="Contacts.Contact">
+		<getContacts isFavorite="1" isCheckAssignable="1"/>
+	</body>
+</envelope>

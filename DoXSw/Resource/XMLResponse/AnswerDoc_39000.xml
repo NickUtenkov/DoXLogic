@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<envelope>
+    <body service="Docflow.Documents.Document">
+        <getDocumentsList>
+            <item controlStateCode="Special" controlDate="20111216180000000" createDate="20111221000000000"
+                documentType="Исходящие" eclass="Договор" id="39000" name="39000 тест - согласование на соисполнение">
+                <documentTasks>
+                    <item dateDeliver="20120720113824000" datePlanEnd="20111223170000000" eclass="1481" id="39001" isCanComplete="1">
+                        <coexecutor id="66318" name="Сидоренко Ф. А." position="Ведущий специалист" bclass="Contacts.Employee" isMyOrganization="1"/>
+                        <executor id="5112" name="admin" position="Ведущий специалист" bclass="Contacts.Employee" isMyOrganization="1"/>
+                        <author id="66318" name="Сидоренко Ф. А." position="Ведущий специалист" bclass="Contacts.Employee" isMyOrganization="1"/>
+                    </item>
+                </documentTasks>
+                <author id="66318" name="Сидоренко Ф. А." position="Ведущий специалист" bclass="Contacts.Employee" isMyOrganization="1"/>
+                <contact bclass="Contacts.Employee" id="5131"
+                    isMyOrganization="1" name="Баньковская О. Н." position="Заведующий отделом в организации с ну очень длинным названием, приводить которое мы здесь не будем"/>
+                <files>
+						 <item id="9845" mime="application/msword"
+						 name="9845.doc" size="33280" nord="8"/>
+						 <item id="9847" mime="application/msword"
+						 name="9847.doc" size="172544" nord="6"/>
+						 <item id="9844" mime="application/msword"
+						 name="9844.doc" size="78336" nord="4"/>
+						 <item id="9846" mime="application/msword"
+						 name="9846.doc" size="31744" nord="2"/>
+                </files>
+            </item>
+
+        </getDocumentsList>
+    </body>
+</envelope>

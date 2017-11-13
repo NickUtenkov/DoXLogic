@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<envelope>
+	<body service="Core.Session">
+		<doLogin success="1" userId="1798" contactId="66318">
+			<contact isBigBoss="0"/>
+		</doLogin>
+	</body>
+</envelope>

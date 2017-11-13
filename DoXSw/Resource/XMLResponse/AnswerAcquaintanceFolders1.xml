@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<envelope>
+    <body service="Docflow.Documents.Folder">
+        <getAcquaintanceFolders>
+            <item id="1735" name="Тест прихода дока">
+            </item>
+            <item id="1835" name="Для ознакомления">
+                <childs>
+                    <item id="1851" name="Совещания">
+                        <childs>
+                            <item id="1860" name="01 марта 2013">
+                                <childs>
+                                    <item id="1863" name="Доклады"/>
+                                    <item id="1864" name="Протоколы"/>
+                                </childs>
+                            </item>
+                            <item id="1862" name="03.04.2013"/>
+                        </childs>
+                    </item>
+                    <item id="1853" name="Конференции"/>
+                    <item id="1859" name="Просто материалы"/>
+                </childs>
+            </item>
+        </getAcquaintanceFolders>
+    </body>
+</envelope>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<envelope>
+	<body service="Docflow.Documents.Document">
+		<getDocumentsId isMyProcessingNeeded= "1" isNowExecutable="1">
+				<query>
+				<orderings>
+				<item name="dateDeliver" value="1"/>
+				</orderings>
+				</query>
+				<taskEClasses>%@
+				</taskEClasses>
+		</getDocumentsId>
+	</body>
+</envelope>

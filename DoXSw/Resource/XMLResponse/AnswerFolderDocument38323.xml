@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<envelope>
+    <body service="Docflow.Documents.Document">
+        <getDocumentsListAcquaintance>
+            <item
+					createDate="20130207000000000"
+						 documentType="Внутренние" eclass="Приказ" id="38323" name="Документ из папки Доклады к совещанию 25.02.2013">
+						 <contact bclass="Contacts.Employee" id="10685"
+							  isMyOrganization="1" name="Болобан И.Б." position="Программист"/>
+						 <files>
+							 <item id="19820" mime="text/plain"
+							 name="19820.txt" size="4051"/>
+							 <item id="19819" mime="text/rtf"
+							 name="19819.rtf" size="16565"/>
+						 </files>
+            </item>
+        </getDocumentsListAcquaintance>
+    </body>
+</envelope>

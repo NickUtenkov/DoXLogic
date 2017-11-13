@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<envelope>
+	<body service="Docflow.Documents.Document">
+		<getTasks isMyProcessingNeeded= "1" isNowExecutable="1" isForwards="1">
+			<taskEClasses>%s
+			</taskEClasses>
+		</getTasks >
+	</body>
+</envelope>

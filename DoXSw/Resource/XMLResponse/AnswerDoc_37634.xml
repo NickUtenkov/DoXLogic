@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<envelope>
+    <body service="Docflow.Documents.Document">
+        <getDocumentsList>
+            <item bclassFullName="NLA.Documents.Document"
+                controlDate="20121229180000000"
+                controlStateCode="Control"
+                createDate="20121207000000000" documentType="Исходящие"
+                eclass="Постановление правительства" id="37634"
+                inDate="20121207" inRegistration="122"
+                name="37634 Очень важный нпа" signatureHash="CABD4B0A1D43EE97AF96887F51FF7925047190987E9C2801A8E5F0F0649E3BCB">
+                <author bclass="Contacts.Employee" id="9966"
+                    isMyOrganization="1" name="Безрукавнов А.С." position="Эксперт"/>
+                <addressees>
+                    <item role="Signer">
+                        <contact bclass="Contacts.Employee" id="9382"
+                            isMyOrganization="0" name="Бекиров С." position="Заместитель Председателя"/>
+                    </item>
+                    <item role="ControllerEx">
+                        <contact bclass="Contacts.Employee" id="9020"
+                            isMyOrganization="1" name="Семенов А.С." position="Старший эксперт"/>
+                    </item>
+                    <item role="MainExecutor">
+                        <contact bclass="Contacts.Employee" id="9051"
+                            isMyOrganization="0" name="Вайнштейн В.С." position="Генеральный директор"/>
+                    </item>
+                    <item role="Inspector">
+                        <contact bclass="Contacts.Employee" id="10625"
+                            isMyOrganization="1" name="Салыгин М.С." position="Эксперт"/>
+                    </item>
+                    <item role="Executive">
+                        <contact bclass="Contacts.LegalPerson" id="8917"
+                            isMyOrganization="0" name="Компания &quot;АПЛАНА&quot;"/>
+                    </item>
+                </addressees>
+                <documentTasks>
+                    <item bclassFullName="Workflow.Works.Task"
+                        dateDeliver="20121207095511320"
+                        datePlanEnd="20121218095412000" description="Проконтролировать и проверить на предмет влазания длинного текста чтобы он правильно переносился на другую строку."
+                        eclass="9" id="37699" isCanComplete="1"
+                        isSignatureNeeded="0"
+                        name="Поручение по документу" state="Active">
+                        <author bclass="Contacts.Employee" id="9966"
+                            isMyOrganization="1" name="Безрукавнов А.С." position="Эксперт"/>
+                        <executor id="66318" name="Сидоренко Ф. А." position="Ведущий специалист" bclass="Contacts.Employee" isMyOrganization="1"/>
+                        <executors>
+                            <item bclass="Contacts.Employee" id="10685"
+                                isMyOrganization="1" name="Болобан И.Б." position="Программист"/>
+                        </executors>
+                        <forwards>
+                            <item bclassFullName="Workflow.Works.Task"
+                                datePlanEnd="20130326100000000"
+                                description="поручение" eclass="9"
+                                id="38117" isCanComplete="0"
+                                isSignatureNeeded="0"
+                                name="Поручение по документу" state="Create">
+                                <author bclass="Contacts.Employee"
+                                    id="10685" isMyOrganization="1"
+                                    name="Болобан И.Б." position="Программист"/>
+                                <executors>
+                                    <item bclass="Contacts.Employee"
+													id="90861" isMyOrganization="1"
+													name="Уткин Н.А." position="Начальник отдела"/>
+                                    <item bclass="Contacts.Employee"
+													id="10131" isMyOrganization="1"
+													name="Костикова Е.Ю." position="Тестировщик"/>
+                                </executors>
+                            </item>
+                            <item bclassFullName="Workflow.Works.Task"
+                                datePlanEnd="20130327103000000"
+                                description="поручение Костиковой"
+                                eclass="9" id="38118" isCanComplete="0"
+                                isSignatureNeeded="0"
+                                name="Поручение по документу" state="Create">
+                                <author bclass="Contacts.Employee"
+                                    id="10685" isMyOrganization="1"
+                                    name="Болобан И.Б." position="Программист"/>
+                                <executors>
+                                    <item bclass="Contacts.Employee"
+													id="10131" isMyOrganization="1"
+													name="Костикова Е.Ю." position="Тестировщик"/>
+                                    <item bclass="Contacts.Employee"
+													id="9086" isMyOrganization="1"
+													name="Анитова Т.В." position="Начальник отдела"/>
+                                </executors>
+                            </item>
+                        </forwards>
+                        <outputDocuments>
+									<!-- Using new docId
+									-->
+                            <item
+                                bclassFullName="Docflow.Documents.Document"
+                                id="3804100"
+                                name="qwerty" signatureHash="123"/>
+									<!-- Using docId already in list
+									-->
+                            <item
+                                bclassFullName="Docflow.Documents.Document"
+                                id="37974"
+                                name="qwerty" signatureHash="123"/>
+                        </outputDocuments>
+                        <outputFiles>
+									<!-- Using fileIds already in list
+									-->
+									  <item id="9869"
+											mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+											name="9869.docx" size="18239" nord="8" signatureHash="123"/>
+									  <item id="9868"
+											mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+											name="9868.docx" size="15598" nord="7" signatureHash="123"/>
+                        </outputFiles>
+
+                        <childs>
+                            <item bclassFullName="Workflow.Works.Task"
+                                dateFactEnd="20130326100000000"
+                                description="Чильдованное поручение" eclass="9"
+										  report="37634(1) Типа репорт который хотим чтобы он был как можно длиннее и никуда и никогда хрена куда умещался"
+                                id="381170" isCanComplete="0"
+                                isSignatureNeeded="0"
+                                name="Поручение по документу" state="Create">
+                                <author bclass="Contacts.Employee"
+                                    id="10685" isMyOrganization="1"
+                                    name="Болобан И.Б." position="Программист"/>
+                                <executors>
+                                    <item bclass="Contacts.Employee"
+													id="90861" isMyOrganization="1"
+													name="Уткин Н.А." position="Начальник отдела"/>
+                                    <item bclass="Contacts.Employee"
+													id="10131" isMyOrganization="1"
+													name="Костикова Е.Ю." position="Тестировщик"/>
+                                </executors>
+										 <outputFiles>
+											  <item id="9869"
+													mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+													name="9869.docx" size="18239" nord="8"/>
+										 </outputFiles>
+										 <outputDocuments>
+											<item id="380410">
+												 <author id="5131" name="Буняковская О. Н." position="Заведующая отдела" bclass="Contacts.Employee" isMyOrganization="1"/>
+												 <contact bclass="Contacts.Employee" id="5131" isMyOrganization="1" name="Буняковская О. Н." position="Заведующая отдела"/>
+											</item>
+											<item id="379740">
+												 <files>
+													  <item id="9869"
+															mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+															name="9869.docx" size="18239" nord="8"/>
+													  <item id="9868"
+															mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+															name="9868.docx" size="15598" nord="7"/>
+												 </files>
+												 <author id="5172" name="Юзяк А. В." position="Консультант" bclass="Contacts.Employee" isMyOrganization="1"/>
+												 <contact bclass="Contacts.Employee" id="5131"
+													  isMyOrganization="1" name="Баньковская О. Н." position="Заведующий отделом в организации с ну очень длинным названием, приводить которое мы здесь не будем"/>
+											</item>
+										 </outputDocuments>
+                            </item>
+                            <item bclassFullName="Workflow.Works.Task"
+                                dateFactEnd="20130327103000000"
+                                description="Чильдовое поручение"
+										  report="37634(2) Типа репорт который хотим чтобы он был как можно длиннее и никуда и никогда хрена куда умещался"
+                                eclass="9" id="381180" isCanComplete="0"
+                                isSignatureNeeded="0"
+                                name="Поручение по документу" state="Create">
+                                <author bclass="Contacts.Employee"
+                                    id="10685" isMyOrganization="1"
+                                    name="Болобан И.Б." position="Программист"/>
+                                <executors>
+                                    <item bclass="Contacts.Employee"
+													id="101311" isMyOrganization="1"
+													name="Костюшко Е.Ю." position="Тестировщик"/>
+                                    <item bclass="Contacts.Employee"
+													id="101312" isMyOrganization="1"
+													name="Костяшко Т.В." position="Начальник отдела"/>
+                                </executors>
+										 <outputFiles>
+											 <item id="19820" mime="text/plain"
+											 name="19820.txt" size="4051"/>
+											 <item id="19819" mime="text/rtf"
+											 name="19819.rtf" size="16565"/>
+										 </outputFiles>
+                            </item>
+                        </childs>
+
+                    </item>
+                </documentTasks>
+                <contact bclass="Contacts.Employee" id="9966"
+                    isMyOrganization="1" name="Безрукавнов А.С." position="Эксперт"/>
+                <files>
+						 <item id="9845" mime="application/msword"
+						 name="9845.doc" size="33280" nord="8"/>
+						 <item id="9847" mime="application/msword"
+						 name="9847.doc" size="172544" nord="6"/>
+						 <item id="9844" mime="application/msword"
+						 name="9844.doc" size="78336" nord="4"/>
+						 <item id="9846" mime="application/msword"
+						 name="9846.doc" size="31744" nord="2"/>
+                </files>
+            </item>
+        </getDocumentsList>
+    </body>
+</envelope>

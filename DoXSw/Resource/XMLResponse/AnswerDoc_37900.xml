@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<envelope>
+    <body service="Docflow.Documents.Document">
+        <getDocumentsList>
+            <item controlStateCode="Control" controlDate="20111209180000000" createDate="20111215000000000"
+                docket="В целях осуществления мер, направленных на обеспечение участия Российской Федерации в реализации Мускокской инициативы по охране здоровья матерей, новорожденных и детей в возрасте до 5 лет, одобренной на саммите «Группы восьми» (Мускока, Канада, 25 - 26 июня 2010 г.), выделить в 2011 - 2013 годах за счет бюджетных ассигнований федерального бюджета до 4,2 млн. долларов США на реализацию мероприятий в рамках совместного проекта Российской Федерации и Всемирной организации здравоохранения «Улучшение качества педиатрической и медико-санитарной помощи в странах Центральной Азии и Африки»"
+                documentType="Внутренние"
+                eclass="Распорядительные документы" id="37900"
+                inDate="20111215" inRegistration="3" name="37900 Об участии Российской Федерации в реализации Мускокской инициативы по охране здоровья матерей, новорожденных и детей в возрасте до 5 лет" priority="1">
+                <files>
+						 <item id="19820" mime="text/plain"
+						 name="19820.txt" size="4051"/>
+						 <item id="19819" mime="text/rtf"
+						 name="19819.rtf" size="16565"/>
+                </files>
+                <documentTasks>
+                    <item dateDeliver="20120720112424000" datePlanEnd="20111216163848000" eclass="30" id="37906" isCanComplete="1" isSignatureNeeded="1">
+                        <executor id="66318" name="Сидоренко Ф. А." position="Ведущий специалист" bclass="Contacts.Employee" isMyOrganization="1"/>
+                        <author id="5112" name="admin" position="Ведущий специалист" bclass="Contacts.Employee" isMyOrganization="1"/>
+                    </item>
+                </documentTasks>
+                <agreeHistoryList>
+                    <item dateDeliver="20120720112124000" dateFactEnd="20111215163728000"
+                        datePlanEnd="20111219163642000" eclass="30"
+                        id="37901" report="123 Далее в детализации добавленной записи необходимо настроить разрезы для справочника выбора на закладке «Параметры» (поле «Наименование» не обязательно для заполнения и используется для идентификации различных выборок по справочнику в задаче)" result="0" isCanComplete="0">
+                        <executor id="5131" name="Баньковская О. Н." position="Заведующий отделом в организации с ну очень длинным названием, приводить которое мы здесь не будем" bclass="Contacts.Employee" isMyOrganization="1"/>
+                        <author id="5112" name="admin" position="Ведущий специалист" bclass="Contacts.Employee" isMyOrganization="1"/>
+                    </item>
+                    <item dateDeliver="20120720112224000" datePlanEnd="20111219163848000" eclass="30" id="37909" isCanComplete="0">
+                        <executor id="5131" name="Баньковская О. Н." position="Заведующий отделом в организации с ну очень длинным названием, приводить которое мы здесь не будем" bclass="Contacts.Employee" isMyOrganization="1"/>
+                        <author id="5112" name="admin" position="Ведущий специалист" bclass="Contacts.Employee" isMyOrganization="1"/>
+                    </item>
+                    <item dateDeliver="20120720112324000" dateFactEnd="20111215163904000"
+                        datePlanEnd="20111216163848000" eclass="30"
+                        id="37907" result="1" isCanComplete="0">
+                        <executor id="5112" name="admin" position="Ведущий специалист" bclass="Contacts.Employee" isMyOrganization="1"/>
+                        <author id="5112" name="admin" position="Ведущий специалист" bclass="Contacts.Employee" isMyOrganization="1"/>
+                    </item>
+                </agreeHistoryList>
+                <author id="5112" name="admin" position="Ведущий специалист" bclass="Contacts.Employee" isMyOrganization="1"/>
+            </item>
+
+        </getDocumentsList>
+    </body>
+</envelope>

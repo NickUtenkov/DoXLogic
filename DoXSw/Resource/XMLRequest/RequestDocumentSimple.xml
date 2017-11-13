@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<envelope>
+	<body service="Docflow.Documents.Document">
+		<getDocumentsListSimple>
+			<documents>
+				<item id="%d"/>
+			</documents>
+		</getDocumentsListSimple>
+	</body>
+</envelope>

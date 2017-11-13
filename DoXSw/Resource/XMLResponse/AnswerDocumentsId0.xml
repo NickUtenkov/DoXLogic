@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<envelope>
+    <body service="Docflow.Documents.Document">
+        <getDocumentsId rowCount="20">
+            <documents>
+                <item id="38246"/>
+                <item id="37795"/>
+                <item id="37870"/>
+                <item id="37875"/>
+                <item id="37938"/>
+                <item id="37957"/>
+                <item id="38145"/>
+                <item id="38257"/>
+                <item id="37900"/>
+                <item id="38101"/>
+                <item id="38041"/>
+                <item id="37974"/>
+                <item id="38150"/>
+                <item id="38050"/>
+                <item id="37912"/>
+                <item id="38140"/>
+                <item id="38162"/>
+                <item id="38032"/>
+                <item id="38084"/>
+					 <item id="37634"/>
+					 <item id="39000"/>
+            </documents>
+            <presentations>
+                <item id="387" name="Выданные мной">
+                    <documents>
+							 <item id="38246"/>
+							 <item id="37795"/>
+							 <item id="37870"/>
+							 <item id="37875"/>
+							 <item id="37938"/>
+							 <item id="37957"/>
+							 <item id="38145"/>
+							 <item id="38257"/>
+							 <item id="37900"/>
+							 <item id="38101"/>
+							 <item id="38041"/>
+                    </documents>
+                </item>
+                <item id="386" name="Выданные мне">
+                    <documents>
+							 <item id="37974"/>
+							 <item id="38150"/>
+							 <item id="38050"/>
+							 <item id="37912"/>
+							 <item id="38140"/>
+							 <item id="38162"/>
+							 <item id="38032"/>
+							 <item id="38084"/>
+							 <item id="37634"/>
+                    </documents>
+                </item>
+                <item id="388" name="Выданные мене">
+                    <documents>
+							 <item id="37875"/>
+                    </documents>
+                </item>
+                <item id="389" name="Выданные типа мене">
+                    <documents>
+							 <item id="37938"/>
+							 <item id="37974"/>
+							 <item id="38150"/>
+                    </documents>
+                </item>
+                <item id="390" name="Типо выданные типа мене">
+						<!--
+                    <documents>
+							 <item id="37957"/>
+                    </documents>
+						-->
+                </item>
+                <item id="391" name="2 Типо выданные типа мене длинное название папки">
+                    <documents>
+							 <item id="38145"/>
+                    </documents>
+                </item>
+                <item id="392" name="3 Типо выданные типа мене длинное название папки">
+                    <documents>
+							 <item id="38257"/>
+                    </documents>
+                </item>
+                <item id="393" name="4 Типо выданные типа мене длинное название папки">
+                    <documents>
+							 <item id="37900"/>
+                    </documents>
+                </item>
+                <item id="394" name="5 Типо выданные типа мене длинное название папки">
+                    <documents>
+							 <item id="38101"/>
+                    </documents>
+                </item>
+                <item id="395" name="6 Типо выданные типа мене длинное название папки">
+                    <documents>
+							 <item id="38041"/>
+                    </documents>
+                </item>
+            </presentations>
+        </getDocumentsId>
+    </body>
+</envelope>

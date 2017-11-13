@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<envelope>
+    <body service="Docflow.Documents.Document">
+        <getDocumentsList>
+            <item controlStateCode="Control" controlDate="20111211180000000" createDate="20111215000000000"
+                docket="Утвердить прилагаемые изменения, которые вносятся в постановление Правительства Российской Федерации от 26 июля 2010 г. № 564 «Об осуществлении бюджетных инвестиций в проектирование, строительство и реконструкцию объектов капитального строительства федеральных государственных учреждений, находящихся в ведении Министерства здравоохранения и социального развития Российской Федерации» (Собрание законодательства Российской Федерации, 2010, № 31, ст. 4259; 2011, № 21, ст. 2964; № 32, ст. 4821)"
+                documentType="Исходящие" eclass="Договор" id="38041" name="38041 О внесении изменений в постановление Правительства Российской Федерации от 26 июля 2010 г. № 564">
+                <documentTasks>
+                    <item dateDeliver1="20120720112924000" datePlanEnd="20111219170000000" eclass="29" id="38047" isCanComplete="1">
+                        <executor id="66318" name="Сидоренко Ф. А." position="Ведущий специалист" bclass="Contacts.Employee" isMyOrganization="1"/>
+                        <author id="5131" name="Баньковская О. Н." position="Заведующий отделом в организации с ну очень длинным названием, приводить которое мы здесь не будем" bclass="Contacts.Employee" isMyOrganization="1"/>
+                    </item>
+                </documentTasks>
+                <agreeHistoryList>
+                    <item dateDeliver1="20120720112824000" dateFactEnd="20111215185133000"
+                        datePlanEnd="20111219170000000" eclass="30"
+                        id="38043" result="1" isCanComplete="0">
+                        <executor id="5131" name="Баньковская О. Н." position="Заведующий отделом в организации с ну очень длинным названием, приводить которое мы здесь не будем" bclass="Contacts.Employee" isMyOrganization="1"/>
+                        <author id="5131" name="Баньковская О. Н." position="Заведующий отделом в организации с ну очень длинным названием, приводить которое мы здесь не будем" bclass="Contacts.Employee" isMyOrganization="1"/>
+                    </item>
+                </agreeHistoryList>
+                <author id="5131" name="Баньковская О. Н." position="Заведующий отделом в организации с ну очень длинным названием, приводить которое мы здесь не будем" bclass="Contacts.Employee" isMyOrganization="1"/>
+                <contact bclass="Contacts.Employee" id="5131"
+                    isMyOrganization="1" name="Баньковская О. Н." position="Заведующий отделом в организации с ну очень длинным названием, приводить которое мы здесь не будем"/>
+            </item>
+
+        </getDocumentsList>
+    </body>
+</envelope>

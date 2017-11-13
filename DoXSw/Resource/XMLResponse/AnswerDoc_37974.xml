@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<envelope>
+    <body service="Docflow.Documents.Document">
+        <getDocumentsList>
+            <item controlStateCode="Special" controlDate="20111212180000000" createDate="20111215000000000"
+                docket="Краткое содержание &#xd;&#xa;Договор о предоставлении услуг"
+                documentType="Исходящие" eclass="Договор" id="37974" name="37974 Лицензионный договор №111-098">
+                <files>
+						 <item id="9845" mime="application/msword"
+						 name="9845.doc" size="33280" nord="8"/>
+						 <item id="9847" mime="application/msword"
+						 name="9847.doc" size="172544" nord="6"/>
+						 <item id="9844" mime="application/msword"
+						 name="9844.doc" size="78336" nord="4"/>
+						 <item id="9846" mime="application/msword"
+						 name="9846.doc" size="31744" nord="2"/>
+                </files>
+                <documentTasks>
+                    <item dateDeliver="20120720113024000" datePlanEnd="20111219170000000" eclass="29"
+                        id="37978" report="комментарий к резолюции Далее в детализации добавленной записи необходимо настроить разрезы для справочника выбора на закладке «Параметры» (поле «Наименование» не обязательно для заполнения и используется для идентификации различных выборок по справочнику в задаче)" isCanComplete="0">
+                        <executor id="5131" name="Баньковская О. Н." position="Заведующий отделом в организации с ну очень длинным названием, приводить которое мы здесь не будем" bclass="Contacts.Employee" isMyOrganization="1"/>
+                        <author id="5172" name="Юзяк А. В." position="Консультант" bclass="Contacts.Employee" isMyOrganization="1"/>
+                    </item>
+                    <item dateDeliver="20120720113124000" datePlanEnd="20111219170000000" eclass="29" id="37977" isCanComplete="1">
+                        <executor id="66318" name="Сидоренко Ф. А." position="Ведущий специалист" bclass="Contacts.Employee" isMyOrganization="1"/>
+                        <author id="5172" name="Юзяк А. В." position="Консультант" bclass="Contacts.Employee" isMyOrganization="1"/>
+                    </item>
+                </documentTasks>
+                <author id="5172" name="Юзяк А. В." position="Консультант" bclass="Contacts.Employee" isMyOrganization="1"/>
+                <contact bclass="Contacts.Employee" id="5131"
+                    isMyOrganization="1" name="Баньковская О. Н." position="Заведующий отделом в организации с ну очень длинным названием, приводить которое мы здесь не будем"/>
+            </item>
+
+        </getDocumentsList>
+    </body>
+</envelope>

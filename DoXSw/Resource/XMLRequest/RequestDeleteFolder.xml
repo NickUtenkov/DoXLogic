@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<envelope>
+	<body service="Docflow.Documents.Folder">
+		<deleteFolder  OperationUID="%@" folder="%d" isDeleteMessages="true"/>
+	</body>
+</envelope>

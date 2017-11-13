@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<envelope>
+    <body service="Docflow.Documents.Document">
+        <getDocumentsId rowCount="20">
+            <documents>
+                <item id="37875"/>
+                <item id="37938"/>
+                <item id="37957"/>
+                <item id="38145"/>
+                <item id="38257"/>
+                <item id="37900"/>
+                <item id="38101"/>
+                <item id="38041"/>
+                <item id="37974"/>
+                <item id="38150"/>
+                <item id="38050"/>
+                <item id="37912"/>
+                <item id="38140"/>
+                <item id="38162"/>
+                <item id="38032"/>
+                <item id="38084"/>
+            </documents>
+            <presentations>
+                <item id="389" name="Выданные типа мене">
+                    <documents>
+							 <item id="37974"/>
+							 <item id="37938"/>
+							 <item id="38050"/>
+                    </documents>
+                </item>
+                <item id="387" name="Выданные мной">
+                    <documents>
+							 <item id="37974"/>
+							 <item id="38150"/>
+							 <item id="38050"/>
+							 <item id="37912"/>
+							 <item id="38140"/>
+							 <item id="38162"/>
+							 <item id="38032"/>
+							 <item id="38084"/>
+                    </documents>
+                </item>
+                <item id="386" name="Выданные мне">
+                    <documents>
+							 <item id="37875"/>
+							 <item id="37938"/>
+							 <item id="37957"/>
+							 <item id="38145"/>
+							 <item id="38257"/>
+							 <item id="37900"/>
+							 <item id="38101"/>
+							 <item id="38041"/>
+                    </documents>
+                </item>
+            </presentations>
+        </getDocumentsId>
+    </body>
+</envelope>

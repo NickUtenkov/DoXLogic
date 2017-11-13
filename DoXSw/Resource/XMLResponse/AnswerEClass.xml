@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<envelope>
+    <body service="EClasses.EClass">
+        <getEClasses>
+            <item fullName="Docflow.References.ArchiveDocument" id="28" nls_name="Архивация документа"/>
+            <item fullName="Docflow.References.ApprovalDocument" id="29" nls_name="Подписание документа"/>
+            <item fullName="Docflow.References.AgreeDocument" id="30" nls_name="Согласование документа"/>
+            <item fullName="Docflow.References.SendDocument" id="32" nls_name="Отправка документа"/>
+            <item fullName="Workflow.References.FormalTask" id="9" nls_name="Поручение по документу"/>
+            <item fullName="Docflow.References.StoreDocument" id="700" nls_name="Определение места хранения документа"/>
+            <item fullName="Docflow.References.InputingDocument" id="33" nls_name="Ввод документа"/>
+            <item fullName="Docflow.References.RegistrationDocument" id="34" nls_name="Регистрация документа"/>
+            <item fullName="Docflow.References.ReviewDocument" id="35" nls_name="Рассмотрение документа"/>
+            <item fullName="Docflow.References.ReworkDocument" id="43" nls_name="Доработка документа"/>
+        </getEClasses>
+		  <!--
+       <getEClasses success="0">
+            <error message="BOError: CL: Docflow.References.FormalTask: unknown package or bclass&#10;"/>
+        </getEClasses>
+		  -->
+        <getEClasses>
+            <item fullName="Workflow.References.InspectionTask" id="1481" nls_name="Ознакомление с документом"/>
+        </getEClasses>
+    </body>
+</envelope>

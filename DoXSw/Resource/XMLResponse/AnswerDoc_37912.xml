@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<envelope>
+    <body service="Docflow.Documents.Document">
+        <getDocumentsList>
+            <item controlStateCode="Control" controlDate="20111215180000000" createDate="20111215000000000"
+                documentType="Исходящие" eclass="Информационное письмо"
+                id="37912" name="37912 Информационное письмо о проведении мероприятия">
+                <files>
+						 <item id="9869"
+						 mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+						 name="9869.docx" size="18239" nord="8"/>
+						 <item id="9868"
+						 mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+						 name="9868.docx" size="15598" nord="7"/>
+						 <item id="9870"
+						 mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+						 name="9870.docx" size="32076" nord="4"/>
+                </files>
+                <documentTasks>
+                    <item dateDeliver="20120720113524000"
+                        datePlanEnd="20111219164348000" eclass="29"
+                        id="37920" report="не утверждаю Далее в детализации добавленной записи необходимо настроить разрезы для справочника выбора на закладке «Параметры» (поле «Наименование» не обязательно для заполнения и используется для идентификации различных выборок по справочнику в задаче)"
+								result="0" isCanComplete="1">
+                        <executor id="66318" name="Сидоренко Ф. А." position="Ведущий специалист" bclass="Contacts.Employee" isMyOrganization="1"/>
+                        <author id="5131" name="Баньковская О. Н." position="Заведующий отделом в организации с ну очень длинным названием, приводить которое мы здесь не будем" bclass="Contacts.Employee" isMyOrganization="1"/>
+                    </item>
+                    <item dateDeliver="20120720113624000" dateFactEnd="20111215164431000"
+                        datePlanEnd="20111219164348000" eclass="29"
+                        id="37919"
+                        report="Утверждено. подписано. &#xd;&#xa;Если исполнитель имеет заместителя. Если в задаче «Личные данные» для исполнителя назначен заместитель, заместитель сможет выполнить выданную замещаемому лицу задачу от своего имени из папки задач замещаемого." result="1" isCanComplete="0">
+                        <executor id="5131" name="Баньковская О. Н." position="Заведующий отделом в организации с ну очень длинным названием, приводить которое мы здесь не будем" bclass="Contacts.Employee" isMyOrganization="1"/>
+                        <author id="5131" name="Баньковская О. Н." position="Заведующий отделом в организации с ну очень длинным названием, приводить которое мы здесь не будем" bclass="Contacts.Employee" isMyOrganization="1"/>
+                    </item>
+                    <item dateDeliver="20120720113724000" datePlanEnd="20111216164348000" eclass="29" id="37918" isCanComplete="1">
+                        <executor id="66318" name="Сидоренко Ф. А." position="Ведущий специалист" bclass="Contacts.Employee" isMyOrganization="1"/>
+                        <author id="5131" name="Баньковская О. Н." position="Заведующий отделом в организации с ну очень длинным названием, приводить которое мы здесь не будем" bclass="Contacts.Employee" isMyOrganization="1"/>
+                    </item>
+                    <item dateDeliver="20120720113824000" datePlanEnd="20111223170000000" eclass="1481" id="39002" isCanComplete="1">
+                        <coexecutor id="66318" name="Сидоренко Ф. А." position="Ведущий специалист" bclass="Contacts.Employee" isMyOrganization="1"/>
+                        <executor id="5112" name="admin" position="Ведущий специалист" bclass="Contacts.Employee" isMyOrganization="1"/>
+                        <author id="66318" name="Сидоренко Ф. А." position="Ведущий специалист" bclass="Contacts.Employee" isMyOrganization="1"/>
+                    </item>
+                </documentTasks>
+                <author id="5131" name="Баньковская О. Н." position="Заведующий отделом в организации с ну очень длинным названием, приводить которое мы здесь не будем" bclass="Contacts.Employee" isMyOrganization="1"/>
+                <contact bclass="Contacts.Employee" id="5131"
+                    isMyOrganization="1" name="Баньковская О. Н." position="Заведующий отделом в организации с ну очень длинным названием, приводить которое мы здесь не будем"/>
+            </item>
+
+        </getDocumentsList>
+    </body>
+</envelope>

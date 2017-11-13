@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<envelope>
+    <body service="Docflow.Documents.Document">
+        <getDocumentsListAcquaintance>
+            <item
+					createDate="20130207000000000"
+						 documentType="Внутренние" eclass="Приказ" id="38329" name="Документ из папки Совещания">
+						 <contact bclass="Contacts.Employee" id="10685"
+							  isMyOrganization="1" name="Болобан И.Б." position="Программист"/>
+						<files>
+							<item id="9869"
+							mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+							name="9869.docx" size="18239" nord="8"/>
+							<item id="9868"
+							mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+							name="9868.docx" size="15598" nord="7"/>
+							<item id="9870"
+							mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+							name="9870.docx" size="32076" nord="4"/>
+						</files>
+            </item>
+        </getDocumentsListAcquaintance>
+    </body>
+</envelope>

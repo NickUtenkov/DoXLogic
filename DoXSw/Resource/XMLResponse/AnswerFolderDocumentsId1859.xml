@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<envelope>
+    <body service="Docflow.Documents.Folder">
+        <getFolderDocumentsId>
+            <item sendDT="20130419143453403">
+                <document id="238246"/>
+            </item>
+            <item sendDT="20130419143453403">
+                <document id="237870"/>
+            </item>
+            <item sendDT="20130419143453403">
+                <document id="382460"/>
+            </item>
+        </getFolderDocumentsId>
+    </body>
+</envelope>

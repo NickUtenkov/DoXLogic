@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<envelope>
+    <body service="Contacts.Contact">
+        <getContacts>
+            <item id="5136" bclass="Contacts.Employee" isMyOrganization="1" name="Григорьев В. Д." position="Младший консультант"/>
+            <item id="5137" bclass="Contacts.Employee" isMyOrganization="1" name="Гриднева М. В." position="Старший консультант"/>
+            <item id="66313" bclass="Contacts.Employee" isMyOrganization="1" name="Грошевой М.Б." position="Ведущий специалист"/>
+            <item id="5138" bclass="Contacts.Employee" isMyOrganization="1" name="Еронов О. Н." position="Заведующий отделом в организации с ну очень длинным названием, приводить которое мы здесь не будем"/>
+            <item id="5139" bclass="Contacts.Employee" isMyOrganization="1" name="Ильин А. В." position="Старший консультант"/>
+            <item id="5140" bclass="Contacts.Employee" isMyOrganization="1" name="Ишанкулов Т. И." position="Старший консультант"/>
+            <item id="5128" bclass="Contacts.Employee" isMyOrganization="1" name="Абрамов С. Ю." position="Старший консультант"/>
+            <item id="5129" bclass="Contacts.Employee" isMyOrganization="1" name="Александрин В. Г." position="Старший консультант"/>
+            <item id="5130" bclass="Contacts.Employee" isMyOrganization="1" name="Балабанов Е. А." position="Заместитель заведующего отделом"/>
+            <item id="5227" bclass="Contacts.Employee" isMyOrganization="1" name="Яковлев А. В." position="Председатель комитета"/>
+            <item id="5596" bclass="Contacts.Employee" isMyOrganization="1" name="Якунина С. В." position="Консультант"/>
+            <item id="5614" bclass="Contacts.Employee" isMyOrganization="1" name="Яницкий В. Б." position="Заведующий отделом в организации с ну очень длинным названием, приводить которое мы здесь не будем"/>
+            <item id="5314" bclass="Contacts.Employee" isMyOrganization="1" name="Ярополова" position="Консультант"/>
+            <item id="5331" bclass="Contacts.Employee" isMyOrganization="1" name="Ярылкин" position="Старший консультант"/>
+            <item id="5173" bclass="Contacts.Employee" isMyOrganization="1" name="Яшкова И. В." position="Ведущий специалист"/>
+            <item id="6280" bclass="Contacts.Employee" isMyOrganization="1" name=" &quot;Безопасные информационные технологи&quot; ООО"/>
+            <item id="6282" bclass="Contacts.Employee" isMyOrganization="1" name=" БТИ Волгоградский филиала ФГПУ «Ростехинвентаризация-Федеральное БТИ&quot; г. Суровикино"/>
+            <item id="6283" bclass="Contacts.Employee" isMyOrganization="1" name=" Бюджетные Финансовые Технологии"/>
+            <item id="6285" bclass="Contacts.Employee" isMyOrganization="1" name=" ВО АТП &quot;Палласовское&quot;"/>
+            <item id="6287" bclass="Contacts.Employee" isMyOrganization="1" name=" Волгоградская федерация кёкусинкай"/>
+            <item id="62870" bclass="Contacts.Employee" isMyOrganization="1" name="ContactToRemove"/>
+        </getContacts>
+    </body>
+</envelope>
