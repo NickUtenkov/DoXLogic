@@ -46,15 +46,19 @@ final class Downloader_AcquFolders : DataDownloader
 			}
 
 			var folderIds:[Int] = []
-			let moc = CoreDataManager.sharedInstance.createWorkerContext()
-			let req:NSFetchRequest<FolderMO> = FolderMO.fetchRequest()
-			if var arFolders:[FolderMO] = try? moc.fetch(req)
+			let cdm = CoreDataManager.sharedInstance
+			let moc = cdm.createWorkerContext()
+			moc.performAndWait
 			{
-				parseFolders(moc,0,elem,&arFolders,&folderIds)
-				for pFolderRec in arFolders {moc.delete(pFolderRec)}
-			}
+				let req:NSFetchRequest<FolderMO> = FolderMO.fetchRequest()
+				if var arFolders:[FolderMO] = try? moc.fetch(req)
+				{
+					self.parseFolders(moc,0,elem,&arFolders,&folderIds)
+					for pFolderRec in arFolders {moc.delete(pFolderRec)}
+				}
 
-			CoreDataManager.sharedInstance.saveContext(moc)
+				cdm.saveContext(moc)
+			}
 
 			getFoldersDocuments(folderIds)
 		}
@@ -70,11 +74,10 @@ final class Downloader_AcquFolders : DataDownloader
 			let str = itemAttrs["name"]
 
 			var pFolderRec:FolderMO? = nil
-			let idx = arFolders.index(where:{$0.folderId == folderId})
-			if idx != nil
+			if let idx = arFolders.index(where:{$0.folderId == folderId})
 			{
-				pFolderRec = arFolders[idx!]
-				arFolders.remove(at: idx!)
+				pFolderRec = arFolders[idx]
+				arFolders.remove(at: idx)
 			}
 			else
 			{
@@ -114,55 +117,57 @@ final class Downloader_AcquFolders : DataDownloader
 			}
 
 			var docsToDownload:[DocMO] = []
-			let moc = CoreDataManager.sharedInstance.createWorkerContext()
-
-			for (docId,version) in docVersions
+			let cdm = CoreDataManager.sharedInstance
+			let moc = cdm.createWorkerContext()
+			moc.performAndWait
 			{
-				let pDocMO:DocMO
-				if let pDocMO1:DocMO = CorDatFuncs.fetchOneRecord(NSPredicate(format:"docId==%d",docId),DocMO.fetchRequest(),moc)
+				for (docId,version) in docVersions
 				{
-					pDocMO = pDocMO1
-				}
-				else
-				{
-					pDocMO = NSEntityDescription.insertNewObject(forEntityName: "Document", into: moc) as! DocMO
-					pDocMO.docId = docId
-					pDocMO.visible = false
-					pDocMO.version = 0
-					if GlobDat.curDocId == docId {NotificationCenter.`default`.post(name:NSNotification.Name(rawValue:GlobDat.kDocArrived),object:nil)}
-				}
-
-				var arDocFolders = Array(pDocMO.foldersList!)
-				for (folderId,arrayDVD) in folderDocs
-				{
-					let idx = arrayDVD.index(where:{$0.docId == docId})
-					if idx != nil
+					let pDocMO:DocMO
+					if let pDocMO1:DocMO = CorDatFuncs.fetchOneRecord(NSPredicate(format:"docId==%d",docId),DocMO.fetchRequest(),moc)
 					{
-						pDocMO.addToFolder(folderId, Utils.getDateFromString(arrayDVD[idx!].strDate), 0)
-						if let idx2 = arDocFolders.index(where:{$0.folderId == folderId})
+						pDocMO = pDocMO1
+					}
+					else
+					{
+						pDocMO = NSEntityDescription.insertNewObject(forEntityName: "Document", into: moc) as! DocMO
+						pDocMO.docId = docId
+						pDocMO.visible = false
+						pDocMO.version = 0
+						if GlobDat.curDocId == docId {NotificationCenter.`default`.post(name:NSNotification.Name(rawValue:GlobDat.kDocArrived),object:nil)}
+					}
+
+					var arDocFolders = Array(pDocMO.foldersList!)
+					for (folderId,arrayDVD) in folderDocs
+					{
+						if let idx = arrayDVD.index(where:{$0.docId == docId})
 						{
-							arDocFolders.remove(at: idx2)
+							pDocMO.addToFolder(folderId, Utils.getDateFromString(arrayDVD[idx].strDate), 0)
+							if let idx2 = arDocFolders.index(where:{$0.folderId == folderId})
+							{
+								arDocFolders.remove(at: idx2)
+							}
 						}
 					}
-				}
-				for pFolderRec in arDocFolders
-				{
-					pDocMO.removeFromFoldersList(pFolderRec)
-					moc.delete(pFolderRec)
-				}
+					for pFolderRec in arDocFolders
+					{
+						pDocMO.removeFromFoldersList(pFolderRec)
+						moc.delete(pFolderRec)
+					}
 
-				if GlobDat.bDisableCheckDocumentVersion || (pDocMO.version < version) || shouldDownloadAttachments(pDocMO)// && ![Synchronizer_v3610 findAlreadyDownloadedDocInCurrentSynchronization:docId]
-				{
-					pDocMO.visible = false
-					docsToDownload.append(pDocMO)
+					if GlobDat.bDisableCheckDocumentVersion || (pDocMO.version < version) || self.shouldDownloadAttachments(pDocMO)// && ![Synchronizer_v3610 findAlreadyDownloadedDocInCurrentSynchronization:docId]
+					{
+						pDocMO.visible = false
+						docsToDownload.append(pDocMO)
+					}
+					else
+					{
+						NotificationCenter.`default`.post(name:NSNotification.Name(rawValue:GlobDat.kRemoveFromDeleteDoc),object:docId)
+						NotificationCenter.`default`.post(name:NSNotification.Name(rawValue:GlobDat.kAddToDownloadedDoc),object:docId)
+					}
 				}
-				else
-				{
-					NotificationCenter.`default`.post(name:NSNotification.Name(rawValue:GlobDat.kRemoveFromDeleteDoc),object:docId)
-					NotificationCenter.`default`.post(name:NSNotification.Name(rawValue:GlobDat.kAddToDownloadedDoc),object:docId)
-				}
+				cdm.saveContext(moc)
 			}
-			CoreDataManager.sharedInstance.saveContext(moc)
 			cAllDocs = Int(docsToDownload.count)
 			NotificationCenter.`default`.post(name:NSNotification.Name(rawValue:GlobDat.kGroup3DocCount),object:cAllDocs)
 			var bCanceled = false

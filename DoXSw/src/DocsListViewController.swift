@@ -300,15 +300,26 @@ final class DocsListViewController : MyVC
 
 	func loadAllDocumentsList()
 	{
-		
 		let req:NSFetchRequest<DocMO> = DocMO.fetchRequest()
 		req.predicate = NSPredicate(format:"visible==YES AND ANY tasks != nil")
-		if let arDocs = try? m_moc!.fetch(req)//todo crash sometimes
+		let moc = CoreDataManager.sharedInstance.createWorkerContext()
+		moc.performAndWait
 		{
-			m_DocList = arDocs
+			if let arDocs = try? moc.fetch(req)//todo crash sometimes
+			{
+				DispatchQueue.main.async
+				{
+					self.m_DocList.removeAll()
+					for pDocMO in arDocs
+					{
+						guard let queueSafeDoc = self.m_moc!.object(with: pDocMO.objectID) as? DocMO else { continue }
+						self.m_DocList.append(queueSafeDoc)
+					}
+					self.countDocuments(&self.m_cUnprocessed,&self.m_cProcessed)
+					NotificationCenter.`default`.post(name:NSNotification.Name(rawValue:GlobDat.kUnprocessedDocsCounter),object:self.m_cUnprocessed)
+				}
+			}
 		}
-		countDocuments(&m_cUnprocessed,&m_cProcessed)
-		NotificationCenter.`default`.post(name:NSNotification.Name(rawValue:GlobDat.kUnprocessedDocsCounter),object:m_cUnprocessed)
 	}
 
 	func findUnprocessedTaskOfEClass(_ arTasks:[TaskUnprocessed],_ eclassId:Int) -> TaskUnprocessed?
@@ -391,7 +402,7 @@ final class DocsListViewController : MyVC
 				var bCanCheckTask = false
 				if (eClassId == 0) && (folderId == 0) {bCanCheckTask = true}//AllDocuments
 				else if (eClassId != 0) && (pTI.displayEClassId == eClassId) {bCanCheckTask = true}
-				else if (eClassId == 0) && (pDoc.foldersList!.index(where:{$0.folderId==folderId}) != nil) {bCanCheckTask = true}
+				else if (eClassId == 0) && (pDoc.foldersList!.contains(where:{$0.folderId==folderId})) {bCanCheckTask = true}
 
 				if bCanCheckTask
 				{
@@ -523,7 +534,7 @@ final class DocsListViewController : MyVC
 			var bCanAddTask = false
 			if (eClassId == 0) && (folderId == 0) {bCanAddTask = true}//AllDocuments
 			else if (eClassId != 0) && (pTask.displayEClassId == eClassId) {bCanAddTask = true}
-			else if (eClassId == 0) && (pDoc.foldersList!.index(where:{$0.folderId == folderId}) != nil) {bCanAddTask = true}
+			else if (eClassId == 0) && (pDoc.foldersList!.contains(where:{$0.folderId == folderId})) {bCanAddTask = true}
 			if bCanAddTask
 			{
 				for j in 0..<9
@@ -548,7 +559,7 @@ final class DocsListViewController : MyVC
 			var bCanAddTask = false
 			if (eClassId == 0) && (folderId == 0) {bCanAddTask = true}//AllDocuments
 			else if (eClassId != 0) && (pTask.displayEClassId == eClassId) {bCanAddTask = true}
-			else if (eClassId == 0) && (pDoc.foldersList!.index(where:{$0.folderId == folderId}) != nil) {bCanAddTask = true}
+			else if (eClassId == 0) && (pDoc.foldersList!.contains(where:{$0.folderId == folderId})) {bCanAddTask = true}
 			if bCanAddTask
 			{
 				pDoc.tasksProcessed.append(pTask)
@@ -724,7 +735,7 @@ final class DocsListViewController : MyVC
 		updateDateLabelsCounts()
 	}
 
-	func processClassifierButtonPressed(_ pBtn:ClassifierButton?)
+	func internalProcessClassifierButtonPressed(_ pBtn:ClassifierButton?)
 	{
 		let prevClsBtn = pressedClassifierButton
 		pressedClassifierButton = pBtn
@@ -737,17 +748,17 @@ final class DocsListViewController : MyVC
 			if pressedClassifierButton != nil
 			{
 				m_navTitle = pressedClassifierButton!.btnName
-
+				
 				m_currentEClass = pressedClassifierButton!.eClass
 				m_currentFolderId = pressedClassifierButton!.folderId
-
+				
 				setSignUnprocessedText(pressedClassifierButton!.cUnprocessed)
 				setSignProcessedText(pressedClassifierButton!.cProcessed)
 			}
 			else
 			{
 				m_navTitle = Bundle.main.object(forInfoDictionaryKey:"CFBundleName") as! String
-
+				
 				m_currentEClass = -100
 				m_currentFolderId = -100
 			}
@@ -756,8 +767,6 @@ final class DocsListViewController : MyVC
 			
 			Utils.prefsSet(m_currentEClass,Utils.createUniq_pressedEClassIdKey())
 			Utils.prefsSet(m_currentFolderId,Utils.createUniq_pressedFolderIdKey())
-			
-			if m_DocList.count == 0 {loadAllDocumentsList()}
 		}
 		
 		if pressedClassifierButton != nil {loadDocumentsListsByEClassOrFolderId()}
@@ -765,6 +774,18 @@ final class DocsListViewController : MyVC
 		updateDateLabelsCounts()
 		
 		restoreListOffset()
+	}
+	func processClassifierButtonPressed(_ pBtn:ClassifierButton?)
+	{
+		if m_DocList.count == 0
+		{
+			DispatchQueue.global(qos: .background).async(execute:
+				{[unowned self] in
+					self.loadAllDocumentsList()
+					Utils.runOnUI{self.internalProcessClassifierButtonPressed(pBtn)}
+			})
+		}
+		else {internalProcessClassifierButtonPressed(pBtn)}
 	}
 
 	@objc func createClassifierButtonsInNotification(notification: NSNotification)
@@ -807,7 +828,25 @@ final class DocsListViewController : MyVC
 				arButtonsInfo.append(pBtnInfo)
 			}
 		}
-		addFoldersToArray(&arButtonsInfo)
+		let moc = CoreDataManager.sharedInstance.createWorkerContext()
+		moc.performAndWait
+		{
+				let req:NSFetchRequest<FolderPresMO> = FolderPresMO.fetchRequest()
+				req.sortDescriptors = [NSSortDescriptor(key:"nOrder",ascending:true),NSSortDescriptor(key:"folderName",ascending:true)]
+				if let folderRecords:[FolderPresMO] = try? moc.fetch(req)
+				{
+					for pFolderRec in folderRecords
+					{
+						var pBtnInfo = ClassifierButtonsInfo()
+						pBtnInfo.imageName = "FolderOpened.png"
+						pBtnInfo.title = pFolderRec.folderName!
+						pBtnInfo.eClass = 0
+						pBtnInfo.folderId = pFolderRec.folderId
+						pBtnInfo.nOrder = pFolderRec.nOrder
+						arButtonsInfo.append(pBtnInfo)
+					}
+				}
+		}
 		
 		var pBtnInfo = ClassifierButtonsInfo()
 		pBtnInfo.imageName = "AllFolders.png"
@@ -999,10 +1038,16 @@ final class DocsListViewController : MyVC
 
 	func moveCurrentDocumentToProcessed()
 	{
-		loadAllDocumentsList()
-		loadDocumentsListsByEClassOrFolderId()
-		updateButtonsDocCounters()
-		NotificationCenter.`default`.post(name:NSNotification.Name(rawValue:GlobDat.kDocMoved),object:nil)
+		DispatchQueue.global(qos: .background).async(execute:
+		{[unowned self] in
+			self.loadAllDocumentsList()
+			self.loadDocumentsListsByEClassOrFolderId()
+			Utils.runOnUI
+			{
+				self.updateButtonsDocCounters()
+				NotificationCenter.`default`.post(name:NSNotification.Name(rawValue:GlobDat.kDocMoved),object:nil)
+			}
+		})
 	}
 
 	func moveCurrentDocumentToNotProcessed()
@@ -1011,9 +1056,12 @@ final class DocsListViewController : MyVC
 		{[unowned self] in
 			self.loadAllDocumentsList()
 			self.loadDocumentsListsByEClassOrFolderId()
-			Utils.runOnUI{self.updateButtonsDocCounters()}
+			Utils.runOnUI
+			{
+				self.updateButtonsDocCounters()
+				NotificationCenter.`default`.post(name:NSNotification.Name(rawValue:GlobDat.kDocMoved),object:nil)
+			}
 		})
-		NotificationCenter.`default`.post(name:NSNotification.Name(rawValue:GlobDat.kDocMoved),object:nil)
 	}
 
 	func updateButtonsDocCounters()
@@ -1110,26 +1158,6 @@ final class DocsListViewController : MyVC
 				{
 					if m_groupInfo[idx].bUsing {m_groupInfo[0].bUsing = false}
 				}
-			}
-		}
-	}
-
-	func addFoldersToArray(_ arButtons:inout [ClassifierButtonsInfo])
-	{
-		let moc = CoreDataManager.sharedInstance.createWorkerContext() 
-		let req:NSFetchRequest<FolderPresMO> = FolderPresMO.fetchRequest()
-		req.sortDescriptors = [NSSortDescriptor(key:"nOrder",ascending:true),NSSortDescriptor(key:"folderName",ascending:true)]
-		if let folderRecords:[FolderPresMO] = try? moc.fetch(req)
-		{
-			for pFolderRec in folderRecords
-			{
-				var pBtnInfo = ClassifierButtonsInfo()
-				pBtnInfo.imageName = "FolderOpened.png"
-				pBtnInfo.title = pFolderRec.folderName!
-				pBtnInfo.eClass = 0
-				pBtnInfo.folderId = pFolderRec.folderId
-				pBtnInfo.nOrder = pFolderRec.nOrder
-				arButtons.append(pBtnInfo)
 			}
 		}
 	}

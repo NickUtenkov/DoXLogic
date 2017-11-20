@@ -249,13 +249,16 @@ final class Synchronizer
 	func getAllContacts()
 	{//http://fuckingswiftblocksyntax.com
 		let req:NSFetchRequest<ContactMO> = ContactMO.fetchRequest()
-		if let contacts:[ContactMO] = try? m_moc.fetch(req)
+		m_moc.performAndWait
 		{
-			for contact in contacts
+			if let contacts:[ContactMO] = try? m_moc.fetch(req)
 			{
-				if contact.favorite {contactsToDeleteFavorite[contact.employeeId] = contact}
-				else if contact.isAffilate {contactsToDeleteAffilate[contact.employeeId] = contact}
-				else {contactsToDelete[contact.employeeId] = contact}
+				for contact in contacts
+				{
+					if contact.favorite {contactsToDeleteFavorite[contact.employeeId] = contact}
+					else if contact.isAffilate {contactsToDeleteAffilate[contact.employeeId] = contact}
+					else {contactsToDelete[contact.employeeId] = contact}
+				}
 			}
 		}
 	}
@@ -294,21 +297,30 @@ final class Synchronizer
 
 	func createAllDocAndFolderIdsListBeforeDownLoad()
 	{
-		let moc:NSManagedObjectContext = CoreDataManager.sharedInstance.createWorkerContext()
-		let req:NSFetchRequest<DocMO> = DocMO.fetchRequest()
-		if let docRecordsBeforeDownload:[DocMO] = try? moc.fetch(req)
+		let moc = CoreDataManager.sharedInstance.createWorkerContext()
+		moc.performAndWait
 		{
-			for pDocMO in docRecordsBeforeDownload {docIdsToDelete.insert(pDocMO.docId)}
+			let req:NSFetchRequest<DocMO> = DocMO.fetchRequest()
+			moc.performAndWait
+			{
+				if let docRecordsBeforeDownload:[DocMO] = try? moc.fetch(req)
+				{
+					for pDocMO in docRecordsBeforeDownload {self.docIdsToDelete.insert(pDocMO.docId)}
+				}
+			}
 		}
 	}
 
 	func createAttachmentList()
 	{
-		let moc:NSManagedObjectContext = CoreDataManager.sharedInstance.createWorkerContext()
-		let req:NSFetchRequest<DocContentMO> = DocContentMO.fetchRequest()
-		if let arAtts:[DocContentMO] = try? moc.fetch(req)
+		let moc = CoreDataManager.sharedInstance.createWorkerContext()
+		moc.performAndWait
 		{
-			for pAtt in arAtts {attachmentsToDelete[pAtt.fileId] = pAtt}
+			let req:NSFetchRequest<DocContentMO> = DocContentMO.fetchRequest()
+			if let arAtts:[DocContentMO] = try? moc.fetch(req)
+			{
+				for pAtt in arAtts {self.attachmentsToDelete[pAtt.fileId] = pAtt}
+			}
 		}
 	}
 

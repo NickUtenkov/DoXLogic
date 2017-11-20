@@ -12,11 +12,9 @@ import CoreData
 final class Downloader_Documents : DataDownloader
 {
 	private var m_bCanceled = true
-	//NSMutableArray *m_uploadOperationsErrors,*m_linkedDocsForDownload
 	
 	private var m_requestDoc_FormatStr = ""
 	private var m_maxDocs = 0,m_cDocumentsDownloaded = 0,m_cDocumentsExists = 0,m_cDocumentsToDownload = 0
-	//var currentOperation:Operation?
 	private var m_moc:NSManagedObjectContext
 
 	init(_ moc:NSManagedObjectContext)
@@ -98,7 +96,7 @@ final class Downloader_Documents : DataDownloader
 			{
 				let attrs = item.attributes
 				let docId = Int(attrs["id"]!)!
-				if let pDocMO = mapDocs[docId]//.index(forKey:docId)
+				if let pDocMO = mapDocs[docId]
 				{
 					let version = XMLFuncs.getVersionFromAttrs(attrs)
 					NotificationCenter.`default`.post(name:NSNotification.Name(rawValue:GlobDat.kRemoveFromDeleteDoc),object:docId)
@@ -118,67 +116,71 @@ final class Downloader_Documents : DataDownloader
 			m_cDocumentsToDownload = Int(docsToDownload.count)
 			removeTasksForNotTaskedDocuments(docTaskedIds)
 
-			let moc = CoreDataManager.sharedInstance.createWorkerContext()
-			let req:NSFetchRequest<FolderPresMO> = FolderPresMO.fetchRequest()
-			var arFolders:[FolderPresMO] = []
-			if let arFolders1 = try? moc.fetch(req)
+			let cdm = CoreDataManager.sharedInstance
+			let moc = cdm.createWorkerContext()
+			moc.performAndWait
 			{
-				arFolders = arFolders1
-			}
-			
-			var mapDocFolders:Dictionary<Int,Set<Int>> = [:]
-
-			let presentationsItems = elem["presentations"].children.filter({ $0.name == "item" })
-			for item in presentationsItems
-			{
-				let attrs = item.attributes
-				let folderId = Int(attrs["id"]!)!
-				let idx = arFolders.index(where: {$0.folderId == folderId})
-				if idx == nil
+				let req:NSFetchRequest<FolderPresMO> = FolderPresMO.fetchRequest()
+				var arFolders:[FolderPresMO] = []
+				moc.performAndWait
 				{
-					let pFolderRec = NSEntityDescription.insertNewObject(forEntityName: "PresentationFolder", into: m_moc) as! FolderPresMO
-					pFolderRec.folderId = folderId
-					pFolderRec.folderName = attrs["name"]
-					if let strOrder = attrs["nord"] {pFolderRec.nOrder = Int(strOrder)!}
-				}
-				else {arFolders.remove(at: idx!)}
-				var nOrder = 1
-				let docsItems = item["documents"].children.filter({ $0.name == "item" })
-				for docItem in docsItems
-				{
-					let attrs = docItem.attributes
-					let docId = Int(attrs["id"]!)!
-					if let pDocMO:DocMO = mapDocs[docId]
+					if let arFolders1 = try? moc.fetch(req)
 					{
-						pDocMO.addToFolder(folderId,nil,nOrder)
-						Utils.addDocFolderToMap(&mapDocFolders,docId,folderId)
+						arFolders = arFolders1
 					}
-					nOrder += 1
 				}
-			}
+				
+				var mapDocFolders:Dictionary<Int,Set<Int>> = [:]
 
-			for (docId,pDocMO) in mapDocs
-			{
-				if let setFolders:Set<Int> = mapDocFolders[docId]
+				let presentationsItems = elem["presentations"].children.filter({ $0.name == "item" })
+				for item in presentationsItems
 				{
-					for pFolder in pDocMO.foldersList!
+					let attrs = item.attributes
+					let folderId = Int(attrs["id"]!)!
+					let idx = arFolders.index(where: {$0.folderId == folderId})
+					if idx == nil
 					{
-						if !setFolders.contains(pFolder.folderId)
+						let pFolderRec = NSEntityDescription.insertNewObject(forEntityName: "PresentationFolder", into: self.m_moc) as! FolderPresMO
+						pFolderRec.folderId = folderId
+						pFolderRec.folderName = attrs["name"]
+						if let strOrder = attrs["nord"] {pFolderRec.nOrder = Int(strOrder)!}
+					}
+					else {arFolders.remove(at: idx!)}
+					var nOrder = 1
+					let docsItems = item["documents"].children.filter({ $0.name == "item" })
+					for docItem in docsItems
+					{
+						let attrs = docItem.attributes
+						let docId = Int(attrs["id"]!)!
+						if let pDocMO:DocMO = mapDocs[docId]
 						{
-							pDocMO.removeFromFolder(pFolder.folderId)
+							pDocMO.addToFolder(folderId,nil,nOrder)
+							Utils.addDocFolderToMap(&mapDocFolders,docId,folderId)
+						}
+						nOrder += 1
+					}
+				}
+
+				for (docId,pDocMO) in mapDocs
+				{
+					if let setFolders:Set<Int> = mapDocFolders[docId]
+					{
+						for pFolder in pDocMO.foldersList!
+						{
+							if !setFolders.contains(pFolder.folderId)
+							{
+								pDocMO.removeFromFolder(pFolder.folderId)
+							}
 						}
 					}
 				}
+
+				for pFolderRec in arFolders {moc.delete(pFolderRec)}
+				cdm.saveContext(moc)
 			}
 
-			for pFolderRec in arFolders {moc.delete(pFolderRec)}
-			CoreDataManager.sharedInstance.saveContext(moc)
-
-			for (_,pDocMO) in mapDocs
-			{
-				pDocMO.visible = false
-			}
-			CoreDataManager.sharedInstance.saveContext(self.m_moc)
+			for (_,pDocMO) in mapDocs { pDocMO.visible = false}
+			cdm.saveContext(m_moc)
 
 			NotificationCenter.`default`.post(name:NSNotification.Name(rawValue:GlobDat.kPresentationsDownloaded),object:0)
 
@@ -228,10 +230,8 @@ final class Downloader_Documents : DataDownloader
 		let url = Utils.createURL(String(format:"AnswerDoc_%d",pDocMO.docId))
 		#endif
 		let docPortionDownloader = Downloader_Doc(url,data,pDocMO)
-		//currentOperation = docPortionDownloader
 		docPortionDownloader.start()
 		m_bCanceled = !docPortionDownloader.isSuccess()
-		//currentOperation = nil
 	}
 
 	@objc func processDocumentAccepted(notification: NSNotification)
@@ -264,39 +264,46 @@ final class Downloader_Documents : DataDownloader
 
 	func removeTasksForNotTaskedDocuments(_ docTaskedIds:Set<Int>)
 	{
-		let moc = CoreDataManager.sharedInstance.createWorkerContext()
-		let req:NSFetchRequest<DocMO> = DocMO.fetchRequest()
-		let predic:NSPredicate = .init(format:"ANY tasks != nil")
-		req.predicate = predic
-		if let arDocs:[DocMO] = try? moc.fetch(req)
+		let cdm = CoreDataManager.sharedInstance
+		let moc = cdm.createWorkerContext()
+		moc.performAndWait
 		{
-			for pDocMO in arDocs
+			let req:NSFetchRequest<DocMO> = DocMO.fetchRequest()
+			let predic:NSPredicate = .init(format:"ANY tasks != nil")
+			req.predicate = predic
+			moc.performAndWait
 			{
-				let docId = pDocMO.docId
-				if !docTaskedIds.contains(docId)
+				if let arDocs:[DocMO] = try? moc.fetch(req)
 				{
-					if GlobDat.curDocId != docId
+					for pDocMO in arDocs
 					{
-						let selRemoveTask = #selector(pDocMO.removeFromTasks as (_ value: TaskUnprocessed) -> Void)
-						CorDatFuncs.removeRelationshipObjects(pDocMO,pDocMO.tasks!,selRemoveTask,true)
-					}
-					else
-					{
-						let arTasks = Array(pDocMO.tasks!)
-						for pTask in arTasks
+						let docId = pDocMO.docId
+						if !docTaskedIds.contains(docId)
 						{
-							if pTask.taskId != GlobDat.curTask
+							if GlobDat.curDocId != docId
 							{
-								pDocMO.removeFromTasks(pTask)
-								moc.delete(pTask)
+								let selRemoveTask = #selector(pDocMO.removeFromTasks as (_ value: TaskUnprocessed) -> Void)
+								CorDatFuncs.removeRelationshipObjects(pDocMO,pDocMO.tasks!,selRemoveTask,true)
 							}
-							NotificationCenter.`default`.post(name:NSNotification.Name(rawValue:GlobDat.kDocTaskDeleted),object:pTask)
+							else
+							{
+								let arTasks = Array(pDocMO.tasks!)
+								for pTask in arTasks
+								{
+									if pTask.taskId != GlobDat.curTask
+									{
+										pDocMO.removeFromTasks(pTask)
+										moc.delete(pTask)
+									}
+									NotificationCenter.`default`.post(name:NSNotification.Name(rawValue:GlobDat.kDocTaskDeleted),object:pTask)
+								}
+							}
 						}
 					}
 				}
 			}
+			cdm.saveContext(moc)
 		}
-		CoreDataManager.sharedInstance.saveContext(moc)
 	}
 
 	func removeAdditionalsFromToDeleteList(_ pDocMO:DocMO)

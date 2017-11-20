@@ -39,24 +39,27 @@ final class Downloader_Autotext : DataDownloader
 				return
 			}
 			let cdm:CoreDataManager = CoreDataManager.sharedInstance
-			let moc:NSManagedObjectContext = cdm.createWorkerContext()
-			CorDatFuncs.removeAllAutotexts(moc)
-			
-			let items = elem.children.filter({ $0.name == "item" })
-			for item in items
+			let moc = cdm.createWorkerContext()
+			moc.performAndWait
 			{
-				let attrs = item.attributes
-				let record = (NSEntityDescription.insertNewObject(forEntityName: "Autotext", into: moc) as! AutotextMO)
-				record.autoTextId = Int(attrs["id"]!)!
-				record.operationUID = nil
-				record.operationType = 0
-				record.text = attrs["value"]
-				let elemKind:AEXMLElement = item["kind"]
-				let attrsKind = elemKind.attributes
-				record.code = attrsKind["code"]
-				record.parentCode = attrsKind["parentCode"]
+				CorDatFuncs.removeAllAutotexts(moc)
+				
+				let items = elem.children.filter({ $0.name == "item" })
+				for item in items
+				{
+					let attrs = item.attributes
+					let record = (NSEntityDescription.insertNewObject(forEntityName: "Autotext", into: moc) as! AutotextMO)
+					record.autoTextId = Int(attrs["id"]!)!
+					record.operationUID = nil
+					record.operationType = 0
+					record.text = attrs["value"]
+					let elemKind:AEXMLElement = item["kind"]
+					let attrsKind = elemKind.attributes
+					record.code = attrsKind["code"]
+					record.parentCode = attrsKind["parentCode"]
+				}
+				cdm.saveContext(moc)
 			}
-			cdm.saveContext(moc)
 		}
 	}
 }

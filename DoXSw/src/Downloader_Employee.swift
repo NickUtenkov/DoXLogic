@@ -39,15 +39,18 @@ final class Downloader_Employee : DataDownloader
 				return
 			}
 			let cdm:CoreDataManager = CoreDataManager.sharedInstance
-			let moc:NSManagedObjectContext = cdm.createWorkerContext()
-			let req:NSFetchRequest<ContactMO> = ContactMO.fetchRequest()
-
-			let items = elem.children.filter({ $0.name == "item" })
-			for item in items
+			let moc = cdm.createWorkerContext()
+			moc.performAndWait
 			{
-				_ = CorDatFuncs.addContact(moc, req, item, true, false)
+				let req:NSFetchRequest<ContactMO> = ContactMO.fetchRequest()
+
+				let items = elem.children.filter({ $0.name == "item" })
+				for item in items
+				{
+					_ = CorDatFuncs.addContact(moc, req, item, true, false)
+				}
+				cdm.saveContext(moc)
 			}
-			cdm.saveContext(moc)
 		}
 	}
 }

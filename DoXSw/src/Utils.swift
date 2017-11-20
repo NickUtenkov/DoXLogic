@@ -180,7 +180,8 @@ final class Utils
 
 	static func getDBName() -> String
 	{
-		return String(format:"%@.sqlite",createUniqUserKey())
+		//return String(format:"%@.sqlite",createUniqUserKey())
+		return String(format:"%@",createUniqUserKey())
 	}
 
 	static func createFilesDir()
@@ -326,8 +327,7 @@ final class Utils
 					var bShouldAdd = false
 					if moSet != nil
 					{
-						let idx = moSet!.index(where:{$0.fileId == attId})
-						if idx != nil {pDocAtt = moSet![idx!]}
+						if let idx = moSet!.index(where:{$0.fileId == attId}) {pDocAtt = moSet![idx]}
 					}
 					if pDocAtt == nil
 					{
@@ -459,7 +459,7 @@ final class Utils
 	static func runOnUI(_ block:@escaping () -> Swift.Void)
 	{
 		if Thread.current.isMainThread {block()}
-		else {DispatchQueue.main.async(execute: block)}
+		else {DispatchQueue.main.async(execute:block)}
 	}
 
 	static func strNilOrEmpty(_ str:String?) -> Bool
@@ -547,7 +547,6 @@ final class Utils
 
 	static func getEClassesString() -> String
 	{
-		//EClasses.loadFromStore()
 		if EClasses.count() > 0
 		{
 			var strOut = ""

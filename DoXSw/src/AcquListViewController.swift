@@ -94,9 +94,7 @@ final class AcquListViewController : MyVC
 		m_imgMarkedOn = UIImage(named:"marked_on")
 		m_imgMarkedOff = UIImage(named:"marked_off")
 		
-		m_pAcquaintanceFolders.m_moc = m_moc
 		tableRowH = m_pAcquaintanceFolders.getRowH()//should be here(in case empty list)
-		m_pAcquaintanceFolders.createFoldersList()
 
 		m_slidingFolders.didLoad()
 		m_slidingFolders.m_LabelNames = ["Folders".localized,"Lock".localized,"Unlock".localized]
@@ -123,11 +121,18 @@ final class AcquListViewController : MyVC
 		m_pAcquaintanceFolders.m_currentFolderId = m_AcquaintanceFolderId
 		m_slidingFolders.m_View.addSubview(m_pAcquaintanceFolders.tableView)
 		
-		loadAllDocumentsList()
-		updateAllFoldersCounters()
-		m_pAcquaintanceFolders.refreshFolders()
-
 		self.view.addObserver(self, forKeyPath:"frame", options: .new, context:&ctx1)
+
+		DispatchQueue.global(qos: .background).async(execute:
+		{[unowned self] in
+			self.m_pAcquaintanceFolders.createFoldersList()
+			self.loadAllDocumentsList()
+			Utils.runOnUI
+			{
+				self.updateAllFoldersCounters()
+				self.m_pAcquaintanceFolders.refreshFolders()
+			}
+		})
 	}
 
 	override func viewDidAppear(_ animated:Bool)
@@ -242,27 +247,39 @@ final class AcquListViewController : MyVC
 	}
 
 	func loadAllDocumentsList()
-	{
-		m_DocList.removeAll()
-		m_indexes.removeAll()
-
+	{//should be called in background thread
 		let foldersId = m_pAcquaintanceFolders.getFolderIdsArray()
-		for folderId in foldersId
+		let moc = CoreDataManager.sharedInstance.createWorkerContext()
+		var arResults = [DocMO]()
+		moc.performAndWait
 		{
-			let req:NSFetchRequest<DocMO> = DocMO.fetchRequest()
-			req.predicate = NSPredicate(format:"visible==YES AND SUBQUERY(foldersList, $x, $x.folderId == %d).@count > 0",folderId)
-			if let arDocs = try? m_moc!.fetch(req)
+			for folderId in foldersId
 			{
-				for pDoc in arDocs
+				let req:NSFetchRequest<DocMO> = DocMO.fetchRequest()
+				req.predicate = NSPredicate(format:"visible==YES AND SUBQUERY(foldersList, $x, $x.folderId == %d).@count > 0",folderId)
+				if let arDocs = try? moc.fetch(req)
 				{
-					if m_DocList.index(where:{$0.docId == pDoc.docId}) == nil
+					for pDocMO in arDocs
 					{
-						m_DocList.append(pDoc)
+						if !arResults.contains(where:{$0.docId == pDocMO.docId})
+						{
+							arResults.append(pDocMO)
+						}
 					}
 				}
 			}
 		}
-		m_DocList.sort(by:dateDeliverAcquaintance)
+		DispatchQueue.main.async
+		{
+			self.m_DocList.removeAll()
+			self.m_indexes.removeAll()
+			for pDocMO in arResults
+			{
+				guard let queueSafeDoc = self.m_moc!.object(with: pDocMO.objectID) as? DocMO else { continue }
+				self.m_DocList.append(queueSafeDoc)
+			}
+			self.m_DocList.sort(by:self.dateDeliverAcquaintance)
+		}
 	}
 
 	func updateAllFoldersCounters()
@@ -301,11 +318,23 @@ final class AcquListViewController : MyVC
 		m_AcquaintanceFolderId = pFolderInfo.folderId
 		self.m_navTitle = pFolderInfo.folderName
 		NotificationCenter.`default`.post(name:NSNotification.Name(rawValue:GlobDat.kNavigationTitleChanged),object:nil)
-		if m_DocList.count == 0 {loadAllDocumentsList()}
-		loadFolderDocumentsList()
-		refreshTable()
-		collapseSlidings()
-		Utils.prefsSet(m_AcquaintanceFolderId,Utils.createUniq_pressedAcquFolderIdKey())
+		let blk =
+		{
+			self.loadFolderDocumentsList()
+			self.refreshTable()
+			self.collapseSlidings()
+			Utils.prefsSet(self.m_AcquaintanceFolderId,Utils.createUniq_pressedAcquFolderIdKey())
+		}
+
+		if m_DocList.count == 0
+		{
+			DispatchQueue.global(qos: .background).async(execute:
+			{[unowned self] in
+				self.loadAllDocumentsList()
+				Utils.runOnUI{blk()}
+			})
+		}
+		else {blk()}
 	}
 
 	@objc func resizeFolderSliding(notification: NSNotification)
@@ -343,7 +372,7 @@ final class AcquListViewController : MyVC
 			for i in 0..<cItems
 			{
 				let pDoc = m_DocList[i]
-				if pDoc.foldersList?.index(where:{$0.folderId == m_AcquaintanceFolderId}) != nil
+				if (pDoc.foldersList?.index(where:{$0.folderId == m_AcquaintanceFolderId})) != nil
 				{
 					m_indexes.append(i)
 				}
@@ -380,13 +409,16 @@ final class AcquListViewController : MyVC
 
 	override func updateData()
 	{
-		Utils.runOnUI
+		DispatchQueue.global(qos: .background).async(execute:
 		{[unowned self] in
 			self.createAcquintanceFoldersList()
 			self.loadAllDocumentsList()
-			self.updateAllFoldersCounters()
-			self.restorePressedFolder()
-		}
+				Utils.runOnUI
+				{
+					self.updateAllFoldersCounters()
+					self.restorePressedFolder()
+				}
+		})
 	}
 
 	func createAcquintanceFoldersList()

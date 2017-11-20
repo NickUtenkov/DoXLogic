@@ -30,12 +30,11 @@ final class Downloader_EClass : DataDownloader
 	{
 		if let elems:[AEXMLElement] = doc?.root["body"].children.filter({ $0.name == "getEClasses" })
 		{
+			var cNodes = 0,cGoodNodes = 0
 			let cdm:CoreDataManager = CoreDataManager.sharedInstance
-			let moc:NSManagedObjectContext = cdm.createWorkerContext()
-			//let req:NSFetchRequest<EClassMO> = .init(entityName:"EClass")
+			let moc = cdm.createWorkerContext()
 			let req:NSFetchRequest<EClassMO> = EClassMO.fetchRequest()
 
-			var cNodes = 0,cGoodNodes = 0
 			for elem in elems
 			{
 				cNodes += 1
@@ -52,20 +51,18 @@ final class Downloader_EClass : DataDownloader
 					let predic:NSPredicate = .init(format:"eclassId==%d",recId)
 					req.predicate = predic
 
-					do
+					moc.performAndWait
 					{
-						let eClassRecords:[EClassMO] = try moc.fetch(req)
-						if eClassRecords.count == 0
+						if let eClassRecords:[EClassMO] = try? moc.fetch(req)
 						{
-							let eClassRec = NSEntityDescription.insertNewObject(forEntityName: "EClass", into: moc) as! EClassMO
-							eClassRec.eclassId = recId
-							eClassRec.name = attrs["nls_name"]
-							eClassRec.fullName = attrs["fullName"]
+							if eClassRecords.count == 0
+							{
+								let eClassRec = NSEntityDescription.insertNewObject(forEntityName: "EClass", into: moc) as! EClassMO
+								eClassRec.eclassId = recId
+								eClassRec.name = attrs["nls_name"]
+								eClassRec.fullName = attrs["fullName"]
+							}
 						}
-					}
-					catch
-					{
-						print(error)
 					}
 				}
 			}

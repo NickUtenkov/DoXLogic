@@ -39,16 +39,19 @@ final class Downloader_Affilate : DataDownloader
 				return
 			}
 			let cdm:CoreDataManager = CoreDataManager.sharedInstance
-			let moc:NSManagedObjectContext = cdm.createWorkerContext()
-			let req:NSFetchRequest<ContactMO> = ContactMO.fetchRequest()
-			
-			let items = elem.children.filter({ $0.name == "item" })
-			for item in items
+			let moc = cdm.createWorkerContext()
+			moc.performAndWait
 			{
-				let node:AEXMLElement = item["contactTo"]
-				_ = CorDatFuncs.addContact(moc, req, node, false, true)
+				let req:NSFetchRequest<ContactMO> = ContactMO.fetchRequest()
+				
+				let items = elem.children.filter({ $0.name == "item" })
+				for item in items
+				{
+					let node:AEXMLElement = item["contactTo"]
+					_ = CorDatFuncs.addContact(moc, req, node, false, true)
+				}
+				cdm.saveContext(moc)
 			}
-			cdm.saveContext(moc)
 		}
 	}
 }

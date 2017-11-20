@@ -63,12 +63,11 @@ final class EClasses
 		m_EClassObjects = []
 	}
 
-	static func loadFromStore()
+	static func loadFromStore(_ block: @escaping () -> Swift.Void)//can use (_ block: (() -> Swift.Void)?)
 	{
 		if m_EClassObjects.count == 0
 		{
 			let cdm:CoreDataManager = CoreDataManager.sharedInstance
-			let moc:NSManagedObjectContext = cdm.createWorkerContext()
 			let req:NSFetchRequest<EClassMO> = .init(entityName:"EClass")
 
 			let order = [GlobDat.EClassNameAgreeDocument,GlobDat.EClassNameApprovalDocument,GlobDat.EClassNameReviewDocument,GlobDat.EClassNameExecution,GlobDat.EClassNameTaskReadDocument]
@@ -76,64 +75,69 @@ final class EClasses
 			let buttonNames = ["ForAgreement".localized,"ForReview".localized,"ForApproval".localized,"ForExecution".localized,"ForTaskRead".localized]
 			var eClassIdMax = 0
 
-			do
-			{
-				let eClassRecords:[EClassMO] = try moc.fetch(req)
-				for i in 0..<order.count
+			cdm.persistentContainer.performBackgroundTask
+			{moc in
+				do
 				{
-					if let pRec = eClassRecords.filter({$0.fullName == order[i]}).first
+					let eClassRecords:[EClassMO] = try moc.fetch(req)
+					//Thread.sleep(forTimeInterval: 5.6)//for test
+					for i in 0..<order.count
 					{
-						let pObj = EClassObject()
-						pObj.m_EClassId = pRec.eclassId
-						pObj.m_EClassButtonName = buttonNames[i]
-						pObj.m_EClassIcon = images[i]
-						m_EClassObjects.append(pObj)
-						eClassIdMax = max(eClassIdMax,pRec.eclassId)
+						if let pRec = eClassRecords.filter({$0.fullName == order[i]}).first
+						{
+							let pObj = EClassObject()
+							pObj.m_EClassId = pRec.eclassId
+							pObj.m_EClassButtonName = buttonNames[i]
+							pObj.m_EClassIcon = images[i]
+							m_EClassObjects.append(pObj)
+							eClassIdMax = max(eClassIdMax,pRec.eclassId)
+						}
 					}
-				}
-				if let pRec = eClassRecords.filter({$0.fullName == GlobDat.EClassNameExecution}).first
-				{
-					GlobDat.eClass_WorkflowReferencesFormalTask = pRec.eclassId
-				}
-				if let pRec = eClassRecords.filter({$0.fullName == GlobDat.EClassNameAgreeDocument}).first
-				{
-					GlobDat.eClass_DocflowReferencesAgreeDocument = pRec.eclassId
-				}
-				if let pRec = eClassRecords.filter({$0.fullName == GlobDat.EClassNameApprovalDocument}).first
-				{
-					GlobDat.eClass_DocflowReferencesApproveDocument = pRec.eclassId
-				}
-				if let pRec = eClassRecords.filter({$0.fullName == GlobDat.EClassNameReviewDocument}).first
-				{
-					GlobDat.eClass_DocflowReferencesReviewDocument = pRec.eclassId
-				}
-				if let pRec = eClassRecords.filter({$0.fullName == GlobDat.EClassNameTaskReadDocument}).first
-				{
-					GlobDat.eClass_DocflowTaskReadDocument = pRec.eclassId
-				}
+					if let pRec = eClassRecords.filter({$0.fullName == GlobDat.EClassNameExecution}).first
+					{
+						GlobDat.eClass_WorkflowReferencesFormalTask = pRec.eclassId
+					}
+					if let pRec = eClassRecords.filter({$0.fullName == GlobDat.EClassNameAgreeDocument}).first
+					{
+						GlobDat.eClass_DocflowReferencesAgreeDocument = pRec.eclassId
+					}
+					if let pRec = eClassRecords.filter({$0.fullName == GlobDat.EClassNameApprovalDocument}).first
+					{
+						GlobDat.eClass_DocflowReferencesApproveDocument = pRec.eclassId
+					}
+					if let pRec = eClassRecords.filter({$0.fullName == GlobDat.EClassNameReviewDocument}).first
+					{
+						GlobDat.eClass_DocflowReferencesReviewDocument = pRec.eclassId
+					}
+					if let pRec = eClassRecords.filter({$0.fullName == GlobDat.EClassNameTaskReadDocument}).first
+					{
+						GlobDat.eClass_DocflowTaskReadDocument = pRec.eclassId
+					}
 
-				if eClassRecords.count > 0
-				{
-					//adding pseudo eclass for documents for reading
-					let pObj = EClassObject()
-					GlobDat.eClass_ReadDocument = eClassIdMax + 1
-					pObj.m_EClassId = GlobDat.eClass_ReadDocument
-					pObj.m_EClassButtonName = "ForAcquaintance".localized
-					pObj.m_EClassIcon = ""
-					m_EClassObjects.append(pObj)
+					if eClassRecords.count > 0
+					{
+						//adding pseudo eclass for documents for reading
+						let pObj = EClassObject()
+						GlobDat.eClass_ReadDocument = eClassIdMax + 1
+						pObj.m_EClassId = GlobDat.eClass_ReadDocument
+						pObj.m_EClassButtonName = "ForAcquaintance".localized
+						pObj.m_EClassIcon = ""
+						m_EClassObjects.append(pObj)
 
-					//adding pseudo eclass for documents for Accept Execution
-					let pObj2 = EClassObject()
-					GlobDat.eClass_AcceptExecution = GlobDat.eClass_ReadDocument + 1
-					pObj2.m_EClassId = GlobDat.eClass_AcceptExecution
-					pObj2.m_EClassButtonName = "ForAcceptExecution".localized
-					pObj2.m_EClassIcon = "NaRassmotrenie.png"
-					m_EClassObjects.append(pObj2)
+						//adding pseudo eclass for documents for Accept Execution
+						let pObj2 = EClassObject()
+						GlobDat.eClass_AcceptExecution = GlobDat.eClass_ReadDocument + 1
+						pObj2.m_EClassId = GlobDat.eClass_AcceptExecution
+						pObj2.m_EClassButtonName = "ForAcceptExecution".localized
+						pObj2.m_EClassIcon = "NaRassmotrenie.png"
+						m_EClassObjects.append(pObj2)
+					}
+					Utils.runOnUI(block)
 				}
-			}
-			catch
-			{
-				print(error)
+				catch
+				{
+					print(error)
+				}
 			}
 		}
 	}

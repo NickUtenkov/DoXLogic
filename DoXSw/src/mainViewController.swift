@@ -20,7 +20,7 @@ final class mainViewController: UIViewController
 	private let m_messagesButton = UIButton(type:.custom)
 	private var btnsMain:[UIView?] = [nil,nil]
 	private var m_bFirstTimeInit:Bool = false
-	private let m_moc = CoreDataManager.sharedInstance.mainMoc
+	private let m_moc = CoreDataManager.sharedInstance.persistentContainer.viewContext
 	private var m_pDocsListViewController:DocsListViewController!
 	private var m_pAcquListViewController:AcquListViewController!
 	private var pressedMainBtnIdx = -1
@@ -59,7 +59,8 @@ final class mainViewController: UIViewController
 		if !m_bFirstTimeInit
 		{
 			m_bFirstTimeInit = true
-			self.performSelector(onMainThread: #selector(self.firstTimeInit), with: nil, waitUntilDone: true)//called here for in case Exception alert shown
+			//self.performSelector(onMainThread: #selector(self.firstTimeInit), with: nil, waitUntilDone: true)//called here for in case Exception alert shown
+			firstTimeInit()
 		}
 	}
 	override func viewWillDisappear(_ animated: Bool)
@@ -118,8 +119,6 @@ final class mainViewController: UIViewController
 		m_btnAcquintance.roundCorners(7,[.topRight , .bottomRight])
 		m_btnAcquintance.addObserver(self, forKeyPath:"bounds", options: .new, context:&ctx2)
 
-		EClasses.reset()
-		EClasses.loadFromStore()
 
 		let storyboard = UIStoryboard(name: "main", bundle: nil)
 		m_pDocsListViewController = storyboard.instantiateViewController(withIdentifier:"DocListView") as! DocsListViewController
@@ -130,12 +129,13 @@ final class mainViewController: UIViewController
 		m_pAcquListViewController.m_moc = m_moc
 		m_pAcquListViewController.view.isHidden = false//force view creation
 
-		if EClasses.count() > 0
+		EClasses.reset()
+		EClasses.loadFromStore(
 		{
-			m_pDocsListViewController.createClassifierButtons()
-			m_pDocsListViewController.updateData()
-			m_pAcquListViewController.updateData()
-		}
+			self.m_pDocsListViewController.createClassifierButtons()
+			self.m_pDocsListViewController.updateData()
+			self.m_pAcquListViewController.updateData()
+		})
 		let savedPressedMainButtonIdx = Utils.prefsGetInteger(Utils.createUniq_MainButtonIdxKey())-1
 		if savedPressedMainButtonIdx != -1
 		{
@@ -324,7 +324,7 @@ final class mainViewController: UIViewController
 	
 	@objc func processEClassLoaded(notification: NSNotification)
 	{
-		EClasses.loadFromStore()
+		EClasses.loadFromStore({})
 	}
 	
 	@objc func processResignActive(notification: NSNotification)

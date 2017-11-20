@@ -21,19 +21,22 @@ final class CorDatFuncs
 		req.predicate = predic
 		var bInsert = false
 
-		let recordTmp:ContactMO? = try! moc.fetch(req).first
-		if recordTmp != nil
+		moc.performAndWait
 		{
-			record = recordTmp!
+			let recordTmp:ContactMO? = try! moc.fetch(req).first
+			if recordTmp != nil
+			{
+				record = recordTmp!
+			}
+			else
+			{
+				bInsert = true
+				record = (NSEntityDescription.insertNewObject(forEntityName: "Contact", into: moc) as! ContactMO)
+				record!.employeeId = employeeId
+				record!.favorite = bIsFavorite
+				record!.isAffilate = bIsAffilate
+			}
 		}
-		else
-		{
-			bInsert = true
-			record = (NSEntityDescription.insertNewObject(forEntityName: "Contact", into: moc) as! ContactMO)
-			record!.employeeId = employeeId
-			record!.favorite = bIsFavorite
-			record!.isAffilate = bIsAffilate
-		} 
 
 		record!.name = attrs["name"]
 		record!.position = attrs["position"]
@@ -54,10 +57,9 @@ final class CorDatFuncs
 	{
 		var record:T? = nil
 		req.predicate = predic
-		let recordTmp:T? = try! moc.fetch(req).first
-		if recordTmp != nil
+		moc.performAndWait
 		{
-			record = recordTmp!
+			record = try! moc.fetch(req).first
 		}
 		return record
 	}
@@ -165,9 +167,12 @@ final class CorDatFuncs
 		{
 			if let req:NSFetchRequest<AutotextMO> = model.fetchRequestTemplate(forName:"AutotextNotModified") as! NSFetchRequest<AutotextMO>?
 			{
-				if let records:[AutotextMO] = try? moc.fetch(req)
+				moc.performAndWait
 				{
-					for record in records {moc.delete(record)}
+					if let records:[AutotextMO] = try? moc.fetch(req)
+					{
+						for record in records {moc.delete(record)}//may be use NSBatchDeleteRequest ?!
+					}
 				}
 			}
 		}

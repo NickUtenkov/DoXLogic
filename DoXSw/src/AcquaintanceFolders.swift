@@ -35,8 +35,6 @@ final class AcquaintanceFolders : NSObject
 	var m_imgWith:CGFloat = 0
 	var idxSelected = -1
 
-	var m_moc:NSManagedObjectContext?
-
 	override func awakeFromNib()
 	{
 		super.awakeFromNib()
@@ -56,21 +54,28 @@ final class AcquaintanceFolders : NSObject
 		m_arFolders.append(pFolderInfo)
 
 		let req:NSFetchRequest<FolderMO> = FolderMO.fetchRequest()
-		if let arFolders = try? m_moc!.fetch(req)
+		let moc = CoreDataManager.sharedInstance.createWorkerContext()
+		moc.performAndWait
 		{
-			var tmpArray:[FolderInfo] = []
-			for pFolder in arFolders
+			if let arFolders = try? moc.fetch(req)
 			{
-				let pFolderInfo = FolderInfo()
-				pFolderInfo.folderId = pFolder.folderId
-				pFolderInfo.folderName = pFolder.folderName!
-				pFolderInfo.folderParentId = pFolder.folderParentId
-				tmpArray.append(pFolderInfo)
+				var tmpArray:[FolderInfo] = []
+				for pFolder in arFolders
+				{
+					let pFolderInfo = FolderInfo()
+					pFolderInfo.folderId = pFolder.folderId
+					pFolderInfo.folderName = pFolder.folderName!
+					pFolderInfo.folderParentId = pFolder.folderParentId
+					tmpArray.append(pFolderInfo)
+				}
+				traverseNodes(0,tmpArray,-1)
+				DispatchQueue.main.async
+				{
+					NotificationCenter.`default`.post(name:NSNotification.Name(rawValue:GlobDat.kDocFolderListChanged),object:self.m_arFolders.count)
+					self.refreshFolders()
+				}
 			}
-			traverseNodes(0,tmpArray,-1)
 		}
-		NotificationCenter.`default`.post(name:NSNotification.Name(rawValue:GlobDat.kDocFolderListChanged),object:m_arFolders.count)
-		refreshFolders()
 	}
 
 	func refreshFolders()
